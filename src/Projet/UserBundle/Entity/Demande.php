@@ -23,7 +23,7 @@ class Demande
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $idDemande;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
@@ -47,124 +47,7 @@ class Demande
      */
     public $etat;
     
-    /**
-     *
-     * @ORM\ManyToMany(
-     * @var ArrayCollection
-     */
-    public $prestations;
-    
-    
-    function __construct() {
-        $this->prestations = new ArrayCollection();
-    }
-
-        /**
-     * Get idDemande
-     *
-     * @return integer
-     */
-    public function getIdDemande()
-    {
-        return $this->idDemande;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Demande
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set datePrestation
-     *
-     * @param DateTime $datePrestation
-     *
-     * @return Demande
-     */
-    public function setDatePrestation($datePrestation)
-    {
-        $this->datePrestation = $datePrestation;
-
-        return $this;
-    }
-
-    /**
-     * Get datePrestation
-     *
-     * @return DateTime
-     */
-    public function getDatePrestation()
-    {
-        return $this->datePrestation;
-    }
-
-    /**
-     * Set dateDemande
-     *
-     * @param DateTime $dateDemande
-     *
-     * @return Demande
-     */
-    public function setDateDemande($dateDemande)
-    {
-        $this->dateDemande = $dateDemande;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDemande
-     *
-     * @return DateTime
-     */
-    public function getDateDemande()
-    {
-        return $this->dateDemande;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param string $etat
-     *
-     * @return Demande
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return string
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-
+  
     /**
      * Set client
      *
