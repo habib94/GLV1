@@ -12,10 +12,3 @@ GLApp.config(['$interpolateProvider',function($interpolateProvider) {
     
 }]);
 
-
-GLApp.config(['$httpProvider',"$http",function ($httpProvider,$http){
-    
-    $http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-
-        
-}]);

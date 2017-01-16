@@ -5,9 +5,9 @@
  */
 
 
-var medecinApp=angular.module("medecinApp");
+var GLApp=angular.module("GLApp");
 
-medecinApp.directive("datePicker",function ($parse){
+GLApp.directive("datePicker",function ($parse){
    
     var directive = {
         restrict : "A",

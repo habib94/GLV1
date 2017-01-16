@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-var medecinApp=angular.module("medecinApp");
+var GLApp=angular.module("GLApp");
 
-medecinApp.directive('validation', function (){ 
+GLApp.directive('validation', function (){ 
     /**
      * exemple validation="" regex="^[A-Za-z ]{2,25}$" et/ou required=""  et/ou valeur
      */
@@ -75,7 +75,7 @@ medecinApp.directive('validation', function (){
    };
 });
 
-medecinApp.directive('erreur',["EVENTS",function (EVENTS){ 
+GLApp.directive('erreur',["EVENTS",function (EVENTS){ 
    return {
       restrict: 'A',
       require: '^form',

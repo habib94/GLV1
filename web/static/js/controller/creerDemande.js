@@ -7,15 +7,15 @@
 
 var GLApp = angular.module("GLApp");
 
-GLApp.controller("creerDemande",["$scope","$uibModal","$prestationService","EVENTS","demandeService",
-    function ($scope,$uibModal,$prestationService,EVENTS,demandeService){
+GLApp.controller("creerDemande",["$scope","$uibModal","prestationService","EVENTS","demandeService",
+    function ($scope,$uibModal,prestationService,EVENTS,demandeService){
         
         $scope.demande = {};
         
         $scope.prestations = [];
         
-        $prestationService.getTous().then(function (prestations){
-            $scope.prestations = prestations;
+        prestationService.getTous().then(function (prestations){
+            $scope.prestations = prestations.data;
         },function (){
             GLApp.openErrorConnexionDialog($uibModal);
         });

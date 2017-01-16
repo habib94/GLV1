@@ -16,7 +16,7 @@ class VisiteurController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('index.html.twig');
+        return $this->render('indexVisiteur.html.twig');
     }
 
 

@@ -1,7 +1,8 @@
 <?php
 namespace Projet\UserBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
 * @ORM\Entity()
@@ -29,14 +30,14 @@ class Demande
      */
     public $description;
     /**
-    * @var \DateTime
+    * @var DateTime
     *
     * @ORM\Column(type="datetime")
      */
     public $datePrestation;
 
     /**
-    * @var \DateTime
+    * @var DateTime
     *
     * @ORM\Column(type="datetime")
     */
@@ -45,8 +46,20 @@ class Demande
      * @ORM\Column(type="string")
      */
     public $etat;
-
+    
     /**
+     *
+     * @ORM\ManyToMany(
+     * @var ArrayCollection
+     */
+    public $prestations;
+    
+    
+    function __construct() {
+        $this->prestations = new ArrayCollection();
+    }
+
+        /**
      * Get idDemande
      *
      * @return integer
@@ -83,7 +96,7 @@ class Demande
     /**
      * Set datePrestation
      *
-     * @param \DateTime $datePrestation
+     * @param DateTime $datePrestation
      *
      * @return Demande
      */
@@ -97,7 +110,7 @@ class Demande
     /**
      * Get datePrestation
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDatePrestation()
     {
@@ -107,7 +120,7 @@ class Demande
     /**
      * Set dateDemande
      *
-     * @param \DateTime $dateDemande
+     * @param DateTime $dateDemande
      *
      * @return Demande
      */
@@ -121,7 +134,7 @@ class Demande
     /**
      * Get dateDemande
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDateDemande()
     {

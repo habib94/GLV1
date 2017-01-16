@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 
-var GLApp=angular.module("GLApp",
-    ['ngRoute','ui.bootstrap','pascalprecht.translate','ngCookies','nvd3',"ngAnimate","rzModule"]);
+var GLApp=angular.module("GLApp",['ngRoute','ui.bootstrap']);
 
 
 GLApp.constant("EVENTS",{

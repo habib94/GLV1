@@ -1,8 +1,8 @@
 
 
-var medecinApp=angular.module("medecinApp");
+var GLApp=angular.module("GLApp");
 
-medecinApp.config(function($routeProvider) {
+GLApp.config(["$routeProvider",function($routeProvider) {
    
     $routeProvider.
 
@@ -21,4 +21,4 @@ medecinApp.config(function($routeProvider) {
     otherwise({
        redirectTo: '/home'
     });
-});
+}]);
