@@ -1,1 +1,21 @@
-<div>fffff</div>
+{% extends 'base.html.twig' %}
+
+{% block css %}
+{% endblock %}
+
+
+{% block javascript %} 
+    
+    
+<script src="{{ asset('static/js/app/route-visiteur.js') }}"></script>
+
+
+{% endblock %}
+
+{% block body %}
+
+    <div ng-view ></div>  
+                           
+                
+
+{% endblock %}

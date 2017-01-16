@@ -1,0 +1,89 @@
+<div class="menu-haute" ng-include="'/static/template/fragment/header-visiteur.html'"></div>
+
+<div class="container-fluid body-page" ng-controller="creerDemande">
+   
+    <form class="form-horizontal" name="creerDemandeForm">
+        <div class="form-group" erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Préstations:</p>
+            </label>
+            <div class="col-sm-8">
+                <select required="" name="prestations" 
+                        class="selectpicker form-control"
+                        ng-model="demande.prestations"
+                        ng-options="prestation.nom for prestation in prestations"
+                        size="3" multiple=""
+                        validation="">
+                </select>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Nom:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.nom" name="nom" validation=""
+                       regex="^[A-Za-z]{2,40}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Prénom:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.prenom" name="prenom" validation=""
+                       regex="^[A-Za-z]{2,40}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Email:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.email" name="email" validation=""
+                       regex="^[A-Za-z]{4,40}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Adresse:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.adresse" name="adresse" validation=""
+                       regex="^[A-Za-z]{2,40}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Téléphone:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="number" ng-model="demande.tel" name="tel" validation=""
+                       regex="^[A-Za-z]{10,10}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">mot de passe:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.motdepasse" name="motdepasse" validation=""
+                       regex="^[A-Za-z]{2,40}$" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">répéter mot de passe:</p>
+            </label>
+            <div class="col-sm-8">
+                <input type="text" ng-model="demande.motdepasse2" name="motdepasse2" 
+                       validation="" valeur="[[[demande.motdepasse]]]"class="form-control" 
+                       required=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="center-block btn btn-success" ng-click="ajouterDemande()"></button>
+        </div>
+    </form>
+    
+</div>

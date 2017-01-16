@@ -1,0 +1,15 @@
+<div class='form-group question-div row' ng-class="class" ng-show="show">
+    <label class='col-sm-8 control-label' ng-show="!pourTable">
+        <p class='text-left' translate="[[[ennonce]]]"></p>
+    </label>
+    <div ng-class="{'col-xs-12' : pourTable , 'col-sm-4':!pourTable}">
+        <div class="btn-group">
+            <label class="btn btn-success btn-oui" ng-model="reponseObj.reponse"
+                    uib-btn-radio="true" translate="OUI"></label>
+            <label class="btn btn-danger btn-non" ng-model="reponseObj.reponse" 
+                    uib-btn-radio="false" translate="NON"></label>
+            <label class="btn btn-danger btn-non" ng-model="reponseObj.DM" 
+                   uib-btn-checkbox translate="DM" ></label>
+        </div>
+    </div>
+</div>

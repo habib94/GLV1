@@ -1,0 +1,182 @@
+.table-centre tr>td {
+    text-align: center;
+}
+
+#logo>img {
+    height: 50px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: white;
+    color:#585757;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+    background-color:white;
+    color: #585757;
+}
+
+.nav-tabs > li > a {
+    border-radius: 14px 14px 0px 0px;
+    border: 1px solid #8e8d8d;
+    background-color: #09c4ff;
+    color : white;
+    font-size: 12px;
+}
+
+.formulaire >  label {
+    border-color: white;
+}
+
+.menu-haute {
+    padding: 0px 10px;
+}
+
+div#menuGauche > ul {
+    border-radius: 6px;
+}
+
+.body-page {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+
+:focus {
+    outline: none;
+}
+
+table#tablePatients td {
+    padding: 4px;
+}
+
+
+.onglets {
+    background-color: white;
+}
+
+body {
+    font-size: 16px;
+    margin: 0;
+/**    background-color: #4e4949;**/
+    background-color: #09c4ff;
+    background-repeat: repeat-y;
+}
+
+a{
+    color: #626263;
+    text-decoration: none;
+}
+
+input.fileElement {
+    display: none !important;
+}
+
+a#logo {
+    padding: 0px !important;
+    margin-left: 40px;
+}
+
+div#view {
+    background-color: white;
+    padding: 10px;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.invalid_input {
+    border-color: #e96666;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(233, 102, 102, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(233, 102, 102, 0.6);
+}
+
+
+div#menuGauche {
+    padding: 0px 10px 0px 0px;
+}
+
+ul#menuTop {
+    background-color: white;
+    border-color: #737070;
+    border-style: solid;
+    border-width: 0px 1px 1px 1px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+ul#menuTop > li > a{
+   vertical-align: middle;
+   padding: 14px;
+}
+
+ul#menuTop > li > a:hover{
+    color : black;
+}
+
+div#menuGauche > ul {
+    background-color: rgb(255, 255, 255);
+}
+
+div#menuGauche a {
+    color: #827d7d;
+}
+
+div#menuGauche a:hover {
+    color: #94c222;
+}
+
+.nav-pills > li {
+    padding: 5px;
+}
+
+.wait .modal-content {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+.wait .modal-dialog {
+    margin: auto;
+    width: 72px;
+    height: 58px;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: absolute;
+}
+
+
+div#langue {
+    top: 20px;
+    right: 2px;
+    position: absolute;
+}
+
+div#langue > div {
+    display: inline-block;
+}
+
+.title {
+    padding-top: 10px;
+}
+
+.caption {
+    padding-bottom: 10px;
+}

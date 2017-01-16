@@ -1,0 +1,17 @@
+
+<div class="menu-haute" ng-include="'/static/template/fragment/header-technicien.html'"></div>
+
+
+<div class="container-fluid">
+    
+    <div class="body-page">
+        <div id="homeTechnicien" class="margin-top margin-bottom">
+            <div class="centre" ng-repeat="centre in technicien.centres">
+                <a ng-href="#centre/[[[centre.id]]]" class="btn btn-default">
+                    <i class="glyphicon glyphicon-dashboard"></i>
+                    <span>[[[centre.nom]]]</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

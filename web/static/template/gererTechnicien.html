@@ -1,0 +1,67 @@
+<div class="modal-header">
+    <h3 class="modal-title">[[[titre]]]</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal" name="gererTechnicien">
+        <div class='form-group' erreur="">
+            <label class='col-sm-3 control-label '><p class="text-left" translate="NOM"></p></label>
+            <div class="col-sm-9">
+                <input type="text" name="nom"
+                       validation="" regex="^[A-Za-z ]{2,25}$"
+                       ng-model="technicien.nom" class="form-control" required=""/>
+            </div>
+        </div>
+        <div class="form-group" erreur="">
+            <label class="col-sm-3 control-label "><p class="text-left" translate="PRENOM"></p></label>
+            <div class="col-sm-9">
+                <input type="text" name="prenom"
+                       validation="" regex="^[A-Za-z ]{2,25}$"
+                       ng-model="technicien.prenom" class="form-control" required="" />
+            </div>
+        </div>
+        <div class="form-group" erreur="">
+            <label class="col-sm-3 control-label "><p class="text-left" translate="EMAIL"></p></label>
+            <div class="col-sm-9">
+                <input type="email" name="email"
+                       validation=""
+                       regex="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                       ng-model="technicien.email" class="form-control" required="" />
+            </div>
+        </div>
+        <div class="form-group" erreur=""> 
+            <label class="col-sm-3 control-label "><p class="text-left" translate="TELEPHONE"></p></label>
+            <div class="col-sm-9">
+                <input type="tel" name="tel"
+                       validation="" regex="^[0-9]{10,15}$"
+                       ng-model="technicien.tel" class="form-control" required="" />
+            </div>
+        </div>
+        <div class="form-group" erreur="">
+            <label class="col-sm-3 control-label"><p class="text-left" translate="CENTRE"></p></label>
+            <div class="col-sm-9">
+                <select required="" class="selectpicker form-control" name="centres"
+                        ng-model="technicien.centres"
+                        ng-options="centre.nom for centre in centres"
+                        size="3" multiple=""
+                        validation="">
+                </select>
+            </div>
+        </div>
+        <div ng-if="typeGestion==='modifier'" class="form-group">
+             <label class="col-sm-3 control-label">
+                 <p class="text-left" translate="ETAT_COMPTE"></p>
+             </label>
+            <div class="col-sm-9">
+                <label class="btn btn-success btn-oui" ng-model="technicien.isActive"
+                    uib-btn-radio="true" translate="ACTIVER"></label>
+                <label class="btn btn-danger btn-non" ng-model="technicien.isActive"
+                    uib-btn-radio="false" translate="DESACTIVER"></label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok(gererTechnicien)" translate="OK"></button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()" translate="CANCEL"></button>
+</div>

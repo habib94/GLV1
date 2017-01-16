@@ -1,0 +1,20 @@
+<div class='form-group question-div row' ng-class="class" ng-show="show">
+    <label class='col-sm-6 control-label' ng-show="!pourTable">
+        <p class='text-left' translate="[[[ennonce]]]"></p>
+    </label>
+    <div ng-class="{'col-xs-12' : pourTable , 'col-sm-6':!pourTable}">
+        <div class="input-group">
+            <input type="number" class="form-control" ng-model="reponseObj.reponse" 
+                   ng-readonly="reponseObj.DM"/>
+            <span class="input-group-addon" ng-if="addon!==undefined" translate="[[[addon]]]">
+                
+            </span>
+            <span class="input-group-btn">
+                 <button type="button" class="btn btn-success btn-non" ng-model="reponseObj.DM" 
+                        uib-btn-checkbox translate="DM">
+                </button>
+            </span>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,15 @@
+.task-admin>a {
+    min-width: 240px;
+}
+
+.task-admin {
+    display: inline-table;
+}
+
+.task-admin a {
+    font-size: 17px;
+}
+
+div#homeAdmin {
+    margin-top: 15px;
+}
