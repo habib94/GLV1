@@ -1,0 +1,45 @@
+
+<div class="menu-haute" ng-include="'/static/template/fragment/header-admin.html'"></div>
+
+
+<div class="container-fluid">
+    <div class="col-sm-3 menu-gauche">
+        <div ng-include="'/static/template/fragment/menu-gauche-admin.html'"></div>
+    </div>
+    <div class="col-sm-9 body-page">
+
+        <legend translate="GESTION_CENTRES"></legend>
+        <div ng-controller="gestionCentres">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>adresse</th>
+                    <th>Telephone</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat='centre in centres'>
+                    <td>[[[centre.nom]]]</td>
+                    <td>[[[centre.adresse]]]</td>
+                    <td>[[[centre.tel]]]</td>
+                    <td>
+                        <button ng-click='modifier(centre)' class='btn-success btn-supprimer-admin'>
+                            <i class='glyphicon glyphicon glyphicon-pencil'></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button ng-click='supprimer(centre)' class='btn-danger btn-supprimer-admin'>
+                            <i class='glyphicon glyphicon-remove'></i>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+            </table> 
+        </div>
+
+    </div>
+    
+</div>

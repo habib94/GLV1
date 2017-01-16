@@ -1,0 +1,25 @@
+<table class="table table-hover table-responsive" ng-show="show">
+    
+    <tr>
+        <th>
+            
+        </th>
+        <th ng-repeat="enonceColone in arrayEnoncesColones track by $index">
+            [[[enonceColone]]]
+        </th>
+    </tr>
+    
+    <tr ng-repeat="enonce in arrayEnonces track by $index">
+        <td>
+            [[[enonce]]]
+        </td>
+        <td ng-repeat="enonceColone in arrayEnoncesColones track by $index">
+            <div ng-if="getTypeColone($indexC) === '1'">
+                <question-boolean  reponse="getReponseByRowByColone($index,$indexC)" ennonce="''" show="true">
+    
+                </question-boolean>
+            </div>
+        </td>
+    </tr>
+    
+</table>

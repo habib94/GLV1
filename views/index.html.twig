@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('static/css/base.css') }}" />
+    <link rel="stylesheet" href="{{ asset('static/css/admin.css') }}" />
+{% endblock %}
+
+
+{% block javascript %} 
+    
+    
+<script src="{{ asset('static/js/app/route-ARC.js') }}"></script>
+
+
+{% endblock %}
+
+{% block body %}
+
+    <div ng-view ></div>  
+                           
+                
+
+{% endblock %}

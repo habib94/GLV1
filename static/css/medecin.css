@@ -1,0 +1,194 @@
+.question-3interne {
+    margin-left: 10%;
+}
+
+.question-2interne {
+    margin-left: 8%;
+}
+
+.question-interne {
+    margin-left: 5%;
+}
+
+.etat-formulaire-tableau-bord:before {
+    content: ' \25CF';
+    font-size: 27px;
+}
+
+.btnTopFormulaire {
+    margin: 10px 0px;
+}
+
+.nomFichier a:hover {
+    color: blue;
+}
+
+.fiche8.nouveau {
+    display: none;
+}
+
+.etat-formulaire-tableau-bord {
+    padding: 0px;
+}
+
+.can {
+    cursor: pointer;
+}
+
+.canot {
+    cursor: default;
+}
+
+td.patientIcon {
+    cursor: pointer;
+}
+
+.etat-formulaire-tableau-bord.nouveau{
+    color:red;
+}
+
+.etat-formulaire-tableau-bord.valide{
+    color : green;
+}
+
+.etat-formulaire-tableau-bord.enregistre{
+    color : yellow;
+}
+
+
+.block-color-formulaire.nouveau {
+    background-color: #ff0505;
+}
+
+.block-color-formulaire.enregistre {
+    background-color: #eaea05;
+}
+
+.block-color-formulaire.valide {
+    background-color: #03c503;
+}
+
+.nomFichier {
+    font-size: 9px;
+}
+
+.block-color-formulaire {
+    color: white;
+    width: 98%;
+}
+
+.question-div>div,.question-div> label {margin: 12px 0px;}
+
+.tableTopFormulaire {
+    height: 40px;
+}
+
+div.valide {
+    /* display: none; */
+}
+
+.tablePatients > thead > tr > th {
+    font-size: 10px;
+}
+
+
+.formulaire {
+    display: inline-table;
+    min-width: 433px;
+    margin-bottom: 10px;
+}
+
+.titre {
+    color: white;
+    font-size: 20px;
+    background-color: #337abe;
+    text-transform: uppercase;
+    padding-left: 12px;
+    margin: 9px 0px;
+    text-align: center;
+}
+
+.btn-oui {
+    background-color: #bbb2b2;
+    border-color: white;
+    font-weight: bolder;
+}
+
+.btn-non:hover{
+     background-color: #c9302c;
+     border-color: white;
+}
+
+.btn-oui:hover{
+     background-color: #045404;
+     border-color: white;
+}
+
+.btn-non {
+    background-color: #8a8181;
+    border-color: white;
+    font-weight: bolder;
+}
+
+.btn-non.active {
+    background-color: red;
+     border-color: white;
+}
+
+.btn-oui.active {
+    background-color: green;
+    border-color: white;
+}
+
+legend {
+    text-align: center;
+}
+
+.question-div.titre {
+    min-height: 60px;
+    font-size: 16px;
+    color: white;
+    background-color: #337abe;
+}
+
+.titreFormulaire {
+    text-align: center;
+    font-size: 20px;
+    color: #09c4ff;
+    padding: 10px;
+}
+
+.question-div {
+    min-height: 60px;
+    background-color: white;
+    border: 1px solid #9e9c9c;
+    border-radius: 6px;
+    padding: 6px 0px;
+}
+
+
+.btn-checkbox {
+    background-color: #504e4e;
+    color: white;
+}
+
+
+.btn-checkbox:hover , .btn-checkbox:focus {
+    background-color: #bbb2b2;
+    color: white;
+}
+
+.btn-checkbox.active:hover{
+    background-color: green;
+    color: white;
+}
+
+.btn-checkbox.active:focus{
+    background-color: green;
+    color: white;
+}
+
+.btn-checkbox.active {
+    background-color: green;
+    color: white;
+}

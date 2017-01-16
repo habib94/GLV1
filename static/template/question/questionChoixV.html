@@ -1,0 +1,36 @@
+<div class="form-group question-div row" ng-class="class" ng-show="show">
+    <label class='col-sm-6 control-label'>
+        <p class='text-left' translate="[[[ennonce]]]"></p>
+    </label>
+    <div class="col-sm-6">
+        <div ng-if="customValue">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-attr-list="[[[id]]]" ng-model="reponseObj.reponse" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-checkbox btn-non" ng-model="reponseObj.DM" 
+                            uib-btn-checkbox translate="DM">
+                    </button>
+                </span>
+                <datalist ng-attr-id="[[[id]]]">
+                    <option ng-repeat="ch in keyChoix track by $index" 
+                            ng-value="getChoix($index)" translate="[[[ch]]]">
+                    </option>
+                </datalist>
+            </div>
+        </div>
+        <div ng-if="!customValue">
+            <div class="input-group">
+                <select class="form-control" ng-model="reponseObj.reponse">
+                    <option ng-repeat="ch in keyChoix track by $index"
+                            ng-attr-value="[[[getChoix($index)]]]" translate="[[[ch]]]">
+                    </option>
+                </select>
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-checkbox btn-non" ng-model="reponseObj.DM" 
+                            uib-btn-checkbox translate="DM">
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
