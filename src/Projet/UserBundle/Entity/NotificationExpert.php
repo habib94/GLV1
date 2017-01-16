@@ -74,4 +74,28 @@ class NotificationExpert extends Notification
     {
         return $this->date;
     }
+
+    /**
+     * Set expert
+     *
+     * @param \Projet\UserBundle\Entity\Expert $expert
+     *
+     * @return NotificationExpert
+     */
+    public function setExpert(\Projet\UserBundle\Entity\Expert $expert)
+    {
+        $this->expert = $expert;
+
+        return $this;
+    }
+
+    /**
+     * Get expert
+     *
+     * @return \Projet\UserBundle\Entity\Expert
+     */
+    public function getExpert()
+    {
+        return $this->expert;
+    }
 }

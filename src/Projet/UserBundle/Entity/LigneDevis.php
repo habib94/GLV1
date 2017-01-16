@@ -63,4 +63,28 @@ class LigneDevis
     {
         return $this->montant;
     }
+
+    /**
+     * Set devis
+     *
+     * @param \Projet\UserBundle\Entity\Devis $devis
+     *
+     * @return LigneDevis
+     */
+    public function setDevis(\Projet\UserBundle\Entity\Devis $devis)
+    {
+        $this->devis = $devis;
+
+        return $this;
+    }
+
+    /**
+     * Get devis
+     *
+     * @return \Projet\UserBundle\Entity\Devis
+     */
+    public function getDevis()
+    {
+        return $this->devis;
+    }
 }

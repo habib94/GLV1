@@ -182,4 +182,45 @@ class Demande
     {
         return $this->etat;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->prestations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add prestation
+     *
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
+     *
+     * @return Demande
+     */
+    public function addPrestation(\Projet\UserBundle\Entity\Prestation $prestation)
+    {
+        $this->prestations[] = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Remove prestation
+     *
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
+     */
+    public function removePrestation(\Projet\UserBundle\Entity\Prestation $prestation)
+    {
+        $this->prestations->removeElement($prestation);
+    }
+
+    /**
+     * Get prestations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrestations()
+    {
+        return $this->prestations;
+    }
 }

@@ -155,4 +155,93 @@ class Satisfaction
     {
         return $this->date;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->prestations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set client
+     *
+     * @param \Projet\UserBundle\Entity\Client $client
+     *
+     * @return Satisfaction
+     */
+    public function setClient(\Projet\UserBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Projet\UserBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Add prestation
+     *
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
+     *
+     * @return Satisfaction
+     */
+    public function addPrestation(\Projet\UserBundle\Entity\Prestation $prestation)
+    {
+        $this->prestations[] = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Remove prestation
+     *
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
+     */
+    public function removePrestation(\Projet\UserBundle\Entity\Prestation $prestation)
+    {
+        $this->prestations->removeElement($prestation);
+    }
+
+    /**
+     * Get prestations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrestations()
+    {
+        return $this->prestations;
+    }
+
+    /**
+     * Set ouvrier
+     *
+     * @param \Projet\UserBundle\Entity\Ouvrier $ouvrier
+     *
+     * @return Satisfaction
+     */
+    public function setOuvrier(\Projet\UserBundle\Entity\Ouvrier $ouvrier)
+    {
+        $this->ouvrier = $ouvrier;
+
+        return $this;
+    }
+
+    /**
+     * Get ouvrier
+     *
+     * @return \Projet\UserBundle\Entity\Ouvrier
+     */
+    public function getOuvrier()
+    {
+        return $this->ouvrier;
+    }
 }

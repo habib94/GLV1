@@ -117,4 +117,45 @@ class Prestation
     {
         return $this->urlImage;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lignedevis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     *
+     * @return Prestation
+     */
+    public function addLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis[] = $lignedevi;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     */
+    public function removeLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis->removeElement($lignedevi);
+    }
+
+    /**
+     * Get lignedevis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLignedevis()
+    {
+        return $this->lignedevis;
+    }
 }

@@ -126,4 +126,93 @@ class Devis
     {
         return $this->fraisMarketing;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lignedevis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set demande
+     *
+     * @param \Projet\UserBundle\Entity\Demande $demande
+     *
+     * @return Devis
+     */
+    public function setDemande(\Projet\UserBundle\Entity\Demande $demande = null)
+    {
+        $this->demande = $demande;
+
+        return $this;
+    }
+
+    /**
+     * Get demande
+     *
+     * @return \Projet\UserBundle\Entity\Demande
+     */
+    public function getDemande()
+    {
+        return $this->demande;
+    }
+
+    /**
+     * Add lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     *
+     * @return Devis
+     */
+    public function addLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis[] = $lignedevi;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     */
+    public function removeLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis->removeElement($lignedevi);
+    }
+
+    /**
+     * Get lignedevis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLignedevis()
+    {
+        return $this->lignedevis;
+    }
+
+    /**
+     * Set prestation
+     *
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
+     *
+     * @return Devis
+     */
+    public function setPrestation(\Projet\UserBundle\Entity\Prestation $prestation)
+    {
+        $this->prestation = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Get prestation
+     *
+     * @return \Projet\UserBundle\Entity\Prestation
+     */
+    public function getPrestation()
+    {
+        return $this->prestation;
+    }
 }

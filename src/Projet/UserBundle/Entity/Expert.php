@@ -30,7 +30,7 @@ class Expert extends Personne
         return $this;
     }
    /**
-   * @ORM\OneToMany(targetEntity="Projet\UserBundle\Entity\Demande", cascade={"persist"})
+   * @ORM\OneToMany(targetEntity="Projet\UserBundle\Entity\Demande",mappedBy="Demande", cascade={"persist"})
    */
      private $demande;
     /**
@@ -196,5 +196,46 @@ class Expert extends Personne
     public function getMotdepasse()
     {
         return $this->motdepasse;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->demande = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add demande
+     *
+     * @param \Projet\UserBundle\Entity\Demande $demande
+     *
+     * @return Expert
+     */
+    public function addDemande(\Projet\UserBundle\Entity\Demande $demande)
+    {
+        $this->demande[] = $demande;
+
+        return $this;
+    }
+
+    /**
+     * Remove demande
+     *
+     * @param \Projet\UserBundle\Entity\Demande $demande
+     */
+    public function removeDemande(\Projet\UserBundle\Entity\Demande $demande)
+    {
+        $this->demande->removeElement($demande);
+    }
+
+    /**
+     * Get demande
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDemande()
+    {
+        return $this->demande;
     }
 }

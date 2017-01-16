@@ -202,4 +202,80 @@ class Ouvrier extends Personne
     {
         return $this->motdepasse;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->satisfactions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commandes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add satisfaction
+     *
+     * @param \Projet\UserBundle\Entity\Satisfaction $satisfaction
+     *
+     * @return Ouvrier
+     */
+    public function addSatisfaction(\Projet\UserBundle\Entity\Satisfaction $satisfaction)
+    {
+        $this->satisfactions[] = $satisfaction;
+
+        return $this;
+    }
+
+    /**
+     * Remove satisfaction
+     *
+     * @param \Projet\UserBundle\Entity\Satisfaction $satisfaction
+     */
+    public function removeSatisfaction(\Projet\UserBundle\Entity\Satisfaction $satisfaction)
+    {
+        $this->satisfactions->removeElement($satisfaction);
+    }
+
+    /**
+     * Get satisfactions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSatisfactions()
+    {
+        return $this->satisfactions;
+    }
+
+    /**
+     * Add commande
+     *
+     * @param \Projet\UserBundle\Entity\Commande $commande
+     *
+     * @return Ouvrier
+     */
+    public function addCommande(\Projet\UserBundle\Entity\Commande $commande)
+    {
+        $this->commandes[] = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Remove commande
+     *
+     * @param \Projet\UserBundle\Entity\Commande $commande
+     */
+    public function removeCommande(\Projet\UserBundle\Entity\Commande $commande)
+    {
+        $this->commandes->removeElement($commande);
+    }
+
+    /**
+     * Get commandes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
 }

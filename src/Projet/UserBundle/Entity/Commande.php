@@ -65,4 +65,52 @@ class Commande
     {
         return $this->datePrestation;
     }
+
+    /**
+     * Set devis
+     *
+     * @param \Projet\UserBundle\Entity\Devis $devis
+     *
+     * @return Commande
+     */
+    public function setDevis(\Projet\UserBundle\Entity\Devis $devis = null)
+    {
+        $this->devis = $devis;
+
+        return $this;
+    }
+
+    /**
+     * Get devis
+     *
+     * @return \Projet\UserBundle\Entity\Devis
+     */
+    public function getDevis()
+    {
+        return $this->devis;
+    }
+
+    /**
+     * Set ouvrier
+     *
+     * @param \Projet\UserBundle\Entity\Ouvrier $ouvrier
+     *
+     * @return Commande
+     */
+    public function setOuvrier(\Projet\UserBundle\Entity\Ouvrier $ouvrier)
+    {
+        $this->ouvrier = $ouvrier;
+
+        return $this;
+    }
+
+    /**
+     * Get ouvrier
+     *
+     * @return \Projet\UserBundle\Entity\Ouvrier
+     */
+    public function getOuvrier()
+    {
+        return $this->ouvrier;
+    }
 }

@@ -74,4 +74,28 @@ class NotificationOuvrier extends Notification
     {
         return $this->date;
     }
+
+    /**
+     * Set ouvrier
+     *
+     * @param \Projet\UserBundle\Entity\Ouvrier $ouvrier
+     *
+     * @return NotificationOuvrier
+     */
+    public function setOuvrier(\Projet\UserBundle\Entity\Ouvrier $ouvrier)
+    {
+        $this->ouvrier = $ouvrier;
+
+        return $this;
+    }
+
+    /**
+     * Get ouvrier
+     *
+     * @return \Projet\UserBundle\Entity\Ouvrier
+     */
+    public function getOuvrier()
+    {
+        return $this->ouvrier;
+    }
 }
