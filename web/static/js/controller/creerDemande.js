@@ -24,7 +24,7 @@ GLApp.controller("creerDemande",["$scope","$uibModal","$location","$timeout","pr
             $scope.$broadcast(EVENTS.CHECK_VALIDATION);
             if($scope.creerDemandeForm.$invalid)
                 return;
-            demandeService.save().then(function (){
+            demandeService.save($scope.demande).then(function (){
                GLApp.openInformationDialog($uibModal,"Votre demande a été bien prise en charge"); 
                GLApp.go($location,$timeout,"/login");
             },function (){

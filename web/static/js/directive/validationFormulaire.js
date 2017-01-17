@@ -6,6 +6,39 @@
 
 var GLApp=angular.module("GLApp");
 
+GLApp.directive('dateString',["uibDateParser",function (uibDateParser){ 
+    /**
+     * exemple validation="" regex="^[A-Za-z ]{2,25}$" et/ou required=""  et/ou valeur
+     */
+  return {
+    restrict: 'EAC',
+    require: 'ngModel',
+    priority: 1,
+    link: function(scope, element, attrs, ngModel) {
+      var dateFormat = 'dd/MM/yyyy';
+
+      ngModel.$parsers.push(function(viewValue,modelValue) {
+          if(attrs.readonly){
+              return uibDateParser.filter(ngModel.$modelValue,dateFormat);
+          }
+        return uibDateParser.filter(viewValue, dateFormat);
+      });
+
+      ngModel.$formatters.push(function(modelValue){
+         if(modelValue){
+             return uibDateParser.parse(modelValue,dateFormat);
+         }
+      });
+        
+     ngModel.$validators.d = function(){
+         return true;
+     };   
+      
+    }
+  };
+}]);
+
+
 GLApp.directive('validation', function (){ 
     /**
      * exemple validation="" regex="^[A-Za-z ]{2,25}$" et/ou required=""  et/ou valeur

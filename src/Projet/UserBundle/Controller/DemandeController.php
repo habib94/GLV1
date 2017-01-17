@@ -14,6 +14,12 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DemandeController extends Controller
 {
+    /**
+     * @Route("/client")
+     */
+    public function clientPage() {
+        return $this->render("client.html.twig");
+    }
     
      /**
     * @Route("/visiteur/demandes")
@@ -34,7 +40,8 @@ class DemandeController extends Controller
          $demandePrestation->setClient($client);
          $demandePrestation->setDescription($demande->description);
          $demandePrestation->setDateDemande(new DateTime());
-         $demandePrestation->setDatePrestation(new DateTime($demande->datePrestation));
+
+         $demandePrestation->setDatePrestation(DateTime::createFromFormat('d/m/Y', $demande->datePrestation));
          $demandePrestation->setEtat("nouveau");
          foreach($demande->prestations as $pres){
              $prestation = $em->getRepository(Prestation::class)->find($pres->id);
