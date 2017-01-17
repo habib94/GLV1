@@ -14,12 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DemandeController extends Controller
 {
-    /**
-     * @Route("/client")
-     */
-    public function clientPage() {
-        return $this->render("client.html.twig");
-    }
     
      /**
     * @Route("/visiteur/demandes")

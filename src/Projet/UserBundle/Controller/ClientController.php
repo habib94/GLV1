@@ -10,6 +10,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ClientController extends Controller
 {
     
+    /**
+     * @Route("/client")
+     */
+    public function clientPage() {
+        return $this->render("client.html.twig");
+    }
+    
      /**
      * @Route("/client/demandes")
      * @Method({"GET"})
