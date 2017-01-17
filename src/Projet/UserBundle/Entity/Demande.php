@@ -17,6 +17,11 @@ class Demande
    * @ORM\JoinColumn(nullable=false)
    */
   public $client;
+  
+  /**
+   * @ORM\ManyToMany(targetEntity="Projet\UserBundle\Entity\Prestation", cascade={"persist"})
+   */
+  private $prestations;
      /**
      * @var int
      *
@@ -24,7 +29,7 @@ class Demande
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    public $idDemande;
+    public $id;
 
     /**
      * @ORM\Column(type="string")
@@ -48,22 +53,39 @@ class Demande
      */
     public $etat;
     
-    
-    public $prestations;
-    
-    
-    function __construct() {
-        $this->prestations = new ArrayCollection();
+  
+    /**
+     * Set client
+     *
+     * @param \Projet\UserBundle\Entity\Client $client
+     *
+     * @return Demande
+     */
+    public function setClient(\Projet\UserBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
     }
 
-        /**
-     * Get idDemande
+    /**
+     * Get client
+     *
+     * @return \Projet\UserBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Get id
      *
      * @return integer
      */
-    public function getIdDemande()
+    public function getId()
     {
-        return $this->idDemande;
+        return $this->id;
     }
 
     /**
@@ -93,7 +115,7 @@ class Demande
     /**
      * Set datePrestation
      *
-     * @param DateTime $datePrestation
+     * @param \DateTime $datePrestation
      *
      * @return Demande
      */
@@ -107,7 +129,7 @@ class Demande
     /**
      * Get datePrestation
      *
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDatePrestation()
     {
@@ -117,7 +139,7 @@ class Demande
     /**
      * Set dateDemande
      *
-     * @param DateTime $dateDemande
+     * @param \DateTime $dateDemande
      *
      * @return Demande
      */
@@ -131,7 +153,7 @@ class Demande
     /**
      * Get dateDemande
      *
-     * @return DateTime
+     * @return \DateTime
      */
     public function getDateDemande()
     {
@@ -161,28 +183,45 @@ class Demande
     {
         return $this->etat;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->prestations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
-     * Set client
+     * Add prestation
      *
-     * @param \Projet\UserBundle\Entity\Client $client
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
      *
      * @return Demande
      */
-    public function setClient(\Projet\UserBundle\Entity\Client $client)
+    public function addPrestation(\Projet\UserBundle\Entity\Prestation $prestation)
     {
-        $this->client = $client;
+        $this->prestations[] = $prestation;
 
         return $this;
     }
 
     /**
-     * Get client
+     * Remove prestation
      *
-     * @return \Projet\UserBundle\Entity\Client
+     * @param \Projet\UserBundle\Entity\Prestation $prestation
      */
-    public function getClient()
+    public function removePrestation(\Projet\UserBundle\Entity\Prestation $prestation)
     {
-        return $this->client;
+        $this->prestations->removeElement($prestation);
+    }
+
+    /**
+     * Get prestations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrestations()
+    {
+        return $this->prestations;
     }
 }

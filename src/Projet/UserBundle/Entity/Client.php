@@ -11,119 +11,112 @@ use Doctrine\ORM\Mapping as ORM;
 class Client extends Personne
 {
 
-/**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    public $idClient;
+   
 
     /**
-     * Get idClient
+     * Get id
      *
      * @return integer
      */
-    public function getIdClient()
+    public function getId()
     {
-        return $this->idClient;
+        return $this->id;
     }
 
     /**
-     * Set firstname
+     * Set nom
      *
-     * @param string $firstname
+     * @param string $nom
      *
      * @return Client
      */
-    public function setFirstname($firstname)
+    public function setNom($nom)
     {
-        $this->firstname = $firstname;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get firstname
+     * Get nom
      *
      * @return string
      */
-    public function getFirstname()
+    public function getNom()
     {
-        return $this->firstname;
+        return $this->nom;
     }
 
     /**
-     * Set login
+     * Set prenom
      *
-     * @param string $login
+     * @param string $prenom
      *
      * @return Client
      */
-    public function setLogin($login)
+    public function setPrenom($prenom)
     {
-        $this->login = $login;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get login
+     * Get prenom
      *
      * @return string
      */
-    public function getLogin()
+    public function getPrenom()
     {
-        return $this->login;
+        return $this->prenom;
     }
 
     /**
-     * Set password
+     * Set adresse
      *
-     * @param string $password
+     * @param string $adresse
      *
      * @return Client
      */
-    public function setPassword($password)
+    public function setAdresse($adresse)
     {
-        $this->password = $password;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
     /**
-     * Get password
+     * Get adresse
      *
      * @return string
      */
-    public function getPassword()
+    public function getAdresse()
     {
-        return $this->password;
+        return $this->adresse;
     }
 
     /**
-     * Set lastname
+     * Set tel
      *
-     * @param string $lastname
+     * @param string $tel
      *
      * @return Client
      */
-    public function setLastname($lastname)
+    public function setTel($tel)
     {
-        $this->lastname = $lastname;
+        $this->tel = $tel;
 
         return $this;
     }
 
     /**
-     * Get lastname
+     * Get tel
      *
      * @return string
      */
-    public function getLastname()
+    public function getTel()
     {
-        return $this->lastname;
+        return $this->tel;
     }
 
     /**
@@ -148,5 +141,29 @@ class Client extends Personne
     public function getEmail()
     {
         return $this->email;
+    }
+
+    /**
+     * Set motdepasse
+     *
+     * @param string $motdepasse
+     *
+     * @return Client
+     */
+    public function setMotdepasse($motdepasse)
+    {
+        $this->motdepasse = $motdepasse;
+
+        return $this;
+    }
+
+    /**
+     * Get motdepasse
+     *
+     * @return string
+     */
+    public function getMotdepasse()
+    {
+        return $this->motdepasse;
     }
 }

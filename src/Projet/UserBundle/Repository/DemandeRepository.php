@@ -10,4 +10,18 @@ namespace Projet\UserBundle\Repository;
  */
 class DemandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findbyet($etat)
+{ 
+        $qb = $this->createQueryBuilder('a');
+
+        $qb
+          ->where('a.etat = :etat')
+          ->setParameter('etat', $etat)
+        ;
+
+        return $qb
+          ->getQuery()
+          ->getResult()
+        ;
+}
 }

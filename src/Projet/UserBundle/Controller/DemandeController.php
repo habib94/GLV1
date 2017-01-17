@@ -10,21 +10,24 @@ use Projet\UserBundle\Entity\Prestation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Projet\UserBundle\Entity\Demande;
 
 class DemandeController extends Controller
 {
     
      /**
-     * @Route("/visiteur/demandes")
-     * @Method({"POST"})
+    * @Route("/visiteur/demandes")
+    * @Method({"POST"})
      */
     public function addDemande(Request $request){
          $demande = json_decode($request->get('demande'));   
          $client = new Client();
          $client->setEmail($demande->email);
-         $client->setFirstname($demande->nom);
-         $client->setLastname($demande->prenom);
-         $client->setPassword($demande->motdepasse);
+         $client->setNom($demande->nom);
+         $client->setAdresse($demande->adresse);
+         $client->setMotdepasse($demande->motdepasse);
+         $client->setTel($demande->tel);
+        
          $em = $this->getDoctrine()->getManager();
          $em->persist($client);
          $demandePrestation = new Demande();
@@ -39,5 +42,17 @@ class DemandeController extends Controller
          $em->persist($demandePrestation);
          $em->flush();
          return new JsonResponse(true);
+    }
+    /**
+     * @Route("/agent_technique/demandes")
+     * @Method({"GET"})
+     */
+    public function getdemandeByEtatAction(Request $request)
+    {
+        $etat=$this->get('request')->get('etat');
+        $em = $this->getDoctrine()->getManager();
+        $demandes = $em->getRepository('ProjetUserBundle:Demande')->findbyet($etat);
+
+        return new JsonResponse($demandes);
     }
 }
