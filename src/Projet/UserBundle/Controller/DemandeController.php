@@ -2,15 +2,15 @@
 
 namespace Projet\UserBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use DateTime;
 use Projet\UserBundle\Entity\Client;
 use Projet\UserBundle\Entity\Demande;
 use Projet\UserBundle\Entity\Prestation;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Projet\UserBundle\Entity\Demande;
 
 class DemandeController extends Controller
 {
@@ -20,24 +20,25 @@ class DemandeController extends Controller
     * @Method({"POST"})
      */
     public function addDemande(Request $request){
-         $demande = json_decode($request->get('demande'));   
+        $dem = $request->get('demande');
+         $demande = json_decode($dem);   
          $client = new Client();
-         $client->setEmail($demande->email);
          $client->setNom($demande->nom);
+         $client->setPrenom($demande->prenom);
          $client->setAdresse($demande->adresse);
-         $client->setMotdepasse($demande->motdepasse);
          $client->setTel($demande->tel);
         
          $em = $this->getDoctrine()->getManager();
          $em->persist($client);
          $demandePrestation = new Demande();
          $demandePrestation->setClient($client);
+         $demandePrestation->setDescription($demande->description);
          $demandePrestation->setDateDemande(new DateTime());
          $demandePrestation->setDatePrestation(new DateTime($demande->datePrestation));
          $demandePrestation->setEtat("nouveau");
          foreach($demande->prestations as $pres){
              $prestation = $em->getRepository(Prestation::class)->find($pres->id);
-             $demandePrestation->prestations->add($prestation);
+             $demandePrestation->addPrestation($prestation);
          }
          $em->persist($demandePrestation);
          $em->flush();
@@ -47,12 +48,10 @@ class DemandeController extends Controller
      * @Route("/agent_technique/demandes")
      * @Method({"GET"})
      */
-    public function getdemandeByEtatAction(Request $request)
-    {
-        $etat=$this->get('request')->get('etat');
+    public function getdemandeByEtatAction(Request $request){
+        $etat= $request->get('etat');
         $em = $this->getDoctrine()->getManager();
         $demandes = $em->getRepository('ProjetUserBundle:Demande')->findbyet($etat);
-
         return new JsonResponse($demandes);
     }
 }

@@ -4,27 +4,14 @@ namespace Projet\UserBundle\Entity;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Projet\UserBundle\Repository\DemandeRepository;
 
 /**
-* @ORM\Entity()
-* @ORM\Table(name="demande")
-* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\DemandeRepository")
+* @ORM\Entity(repositoryClass="DemandeRepository")
 */
-class Demande 
-{
+class Demande {
+    
     /**
-   * @ORM\ManyToOne(targetEntity="Projet\UserBundle\Entity\Client")
-   * @ORM\JoinColumn(nullable=false)
-   */
-  public $client;
-  
-  /**
-   * @ORM\ManyToMany(targetEntity="Projet\UserBundle\Entity\Prestation", cascade={"persist"})
-   */
-  private $prestations;
-     /**
-     * @var int
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -48,180 +35,94 @@ class Demande
     * @ORM\Column(type="datetime")
     */
     public $dateDemande;
+    
+    
     /**
      * @ORM\Column(type="string")
      */
     public $etat;
     
+    /**
+    * @ORM\ManyToOne(targetEntity="Client",inversedBy="demandes")
+    * @ORM\JoinColumn(name="client_id",referencedColumnName="id")
+    */
+   public $client;
+   
+   /**
+    * @ORM\ManyToOne(targetEntity="Expert",inversedBy="demandes")
+    * @ORM\JoinColumn(name="expert_id",referencedColumnName="id")
+    */
+   public $expert;
+   
+   /**
+    * @ORM\ManyToOne(targetEntity="Ouvrier",inversedBy="demandes")
+    * @ORM\JoinColumn(name="ouvrier_id",referencedColumnName="id")
+    */
+   public $ouvrier;
+
+   /**
+    * @ORM\ManyToMany(targetEntity="Prestation")
+     * @ORM\JoinTable(name="demandes_prestations",
+     *      joinColumns={@ORM\JoinColumn(name="demande_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="prestation_id", referencedColumnName="id")}
+     *      )
+    */
+   public $prestations;
   
-    /**
-     * Set client
-     *
-     * @param \Projet\UserBundle\Entity\Client $client
-     *
-     * @return Demande
-     */
-    public function setClient(\Projet\UserBundle\Entity\Client $client)
-    {
-        $this->client = $client;
-
-        return $this;
+     /**
+      *
+      * @ORM\OneToOne(targetEntity="Devis")
+      * @ORM\JoinColumn(name="devis_id", referencedColumnName="id")
+      */
+    public $devis;
+  
+    public function __construct() {
+        $this->prestations = new ArrayCollection();
+    }
+    
+    public function addPrestation($prestation) {
+        $this->prestations->add($prestation);
+    }
+    
+    function setId($id) {
+        $this->id = $id;
     }
 
-    /**
-     * Get client
-     *
-     * @return \Projet\UserBundle\Entity\Client
-     */
-    public function getClient()
-    {
-        return $this->client;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Demande
-     */
-    public function setDescription($description)
-    {
+    function setDescription($description) {
         $this->description = $description;
-
-        return $this;
     }
 
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set datePrestation
-     *
-     * @param \DateTime $datePrestation
-     *
-     * @return Demande
-     */
-    public function setDatePrestation($datePrestation)
-    {
+    function setDatePrestation(DateTime $datePrestation) {
         $this->datePrestation = $datePrestation;
-
-        return $this;
     }
 
-    /**
-     * Get datePrestation
-     *
-     * @return \DateTime
-     */
-    public function getDatePrestation()
-    {
-        return $this->datePrestation;
-    }
-
-    /**
-     * Set dateDemande
-     *
-     * @param \DateTime $dateDemande
-     *
-     * @return Demande
-     */
-    public function setDateDemande($dateDemande)
-    {
+    function setDateDemande(DateTime $dateDemande) {
         $this->dateDemande = $dateDemande;
-
-        return $this;
     }
 
-    /**
-     * Get dateDemande
-     *
-     * @return \DateTime
-     */
-    public function getDateDemande()
-    {
-        return $this->dateDemande;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param string $etat
-     *
-     * @return Demande
-     */
-    public function setEtat($etat)
-    {
+    function setEtat($etat) {
         $this->etat = $etat;
-
-        return $this;
     }
 
-    /**
-     * Get etat
-     *
-     * @return string
-     */
-    public function getEtat()
-    {
-        return $this->etat;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->prestations = new \Doctrine\Common\Collections\ArrayCollection();
+    function setClient($client) {
+        $this->client = $client;
     }
 
-    /**
-     * Add prestation
-     *
-     * @param \Projet\UserBundle\Entity\Prestation $prestation
-     *
-     * @return Demande
-     */
-    public function addPrestation(\Projet\UserBundle\Entity\Prestation $prestation)
-    {
-        $this->prestations[] = $prestation;
-
-        return $this;
+    function setExpert($expert) {
+        $this->expert = $expert;
     }
 
-    /**
-     * Remove prestation
-     *
-     * @param \Projet\UserBundle\Entity\Prestation $prestation
-     */
-    public function removePrestation(\Projet\UserBundle\Entity\Prestation $prestation)
-    {
-        $this->prestations->removeElement($prestation);
+    function setOuvrier($ouvrier) {
+        $this->ouvrier = $ouvrier;
     }
 
-    /**
-     * Get prestations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPrestations()
-    {
-        return $this->prestations;
+    function setPrestations($prestations) {
+        $this->prestations = $prestations;
     }
+
+    function setDevis($devis) {
+        $this->devis = $devis;
+    }
+
+
 }

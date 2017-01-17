@@ -1,169 +1,78 @@
 <?php
 namespace Projet\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Projet\UserBundle\Repository\ClientRepository;
 
 /**
-* @ORM\Entity()
-* @ORM\Table(name="client")
-* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\ClientRepository")
+* @ORM\Entity(repositoryClass="ClientRepository")
 */
-class Client extends Personne
-{
+class Client{
 
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    public $id;
    
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $nom;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @ORM\Column(type="string")
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    public $prenom;
 
     /**
-     * Set nom
-     *
-     * @param string $nom
-     *
-     * @return Client
+     * @ORM\Column(type="string")
      */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
+    public $adresse;
 
     /**
-     * Get nom
-     *
-     * @return string
+     * @ORM\Column(type="string")
      */
-    public function getNom()
-    {
-        return $this->nom;
-    }
+    public $tel;
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Demande",mappedBy="client")
+    */
+     public $demandes;
+     
+     public function __construct() {
+         $this->demandes = new ArrayCollection();
+     }
+     
+     public function addDemande($demande) {
+         $this->demandes->add($demande);
+     }
 
-    /**
-     * Set prenom
-     *
-     * @param string $prenom
-     *
-     * @return Client
-     */
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
+     function setId($id) {
+         $this->id = $id;
+     }
 
-        return $this;
-    }
+     function setNom($nom) {
+         $this->nom = $nom;
+     }
 
-    /**
-     * Get prenom
-     *
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
+     function setPrenom($prenom) {
+         $this->prenom = $prenom;
+     }
 
-    /**
-     * Set adresse
-     *
-     * @param string $adresse
-     *
-     * @return Client
-     */
-    public function setAdresse($adresse)
-    {
-        $this->adresse = $adresse;
+     function setAdresse($adresse) {
+         $this->adresse = $adresse;
+     }
 
-        return $this;
-    }
+     function setTel($tel) {
+         $this->tel = $tel;
+     }
 
-    /**
-     * Get adresse
-     *
-     * @return string
-     */
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
+     function setDemandes($demandes) {
+         $this->demandes = $demandes;
+     }
 
-    /**
-     * Set tel
-     *
-     * @param string $tel
-     *
-     * @return Client
-     */
-    public function setTel($tel)
-    {
-        $this->tel = $tel;
 
-        return $this;
-    }
-
-    /**
-     * Get tel
-     *
-     * @return string
-     */
-    public function getTel()
-    {
-        return $this->tel;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Client
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set motdepasse
-     *
-     * @param string $motdepasse
-     *
-     * @return Client
-     */
-    public function setMotdepasse($motdepasse)
-    {
-        $this->motdepasse = $motdepasse;
-
-        return $this;
-    }
-
-    /**
-     * Get motdepasse
-     *
-     * @return string
-     */
-    public function getMotdepasse()
-    {
-        return $this->motdepasse;
-    }
 }
