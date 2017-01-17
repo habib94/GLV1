@@ -5,10 +5,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity()
-* @ORM\Table(name="agentTechnique")
-* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\AgentTechniqueRepository")
+* @ORM\Table(name="agentadministratif")
+* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\AgentAdministratifRepository")
 */
-class AgentTechnique extends Personne
+class AgentAdministratif extends Personne
 {
 
    
@@ -28,7 +28,7 @@ class AgentTechnique extends Personne
      *
      * @param string $nom
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setNom($nom)
     {
@@ -52,7 +52,7 @@ class AgentTechnique extends Personne
      *
      * @param string $prenom
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setPrenom($prenom)
     {
@@ -76,7 +76,7 @@ class AgentTechnique extends Personne
      *
      * @param string $adresse
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setAdresse($adresse)
     {
@@ -100,7 +100,7 @@ class AgentTechnique extends Personne
      *
      * @param string $tel
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setTel($tel)
     {
@@ -124,7 +124,7 @@ class AgentTechnique extends Personne
      *
      * @param string $email
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setEmail($email)
     {
@@ -148,7 +148,7 @@ class AgentTechnique extends Personne
      *
      * @param string $motdepasse
      *
-     * @return AgentTechnique
+     * @return AgentAdministratif
      */
     public function setMotdepasse($motdepasse)
     {
