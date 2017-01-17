@@ -10,6 +10,7 @@ use Projet\UserBundle\Entity\Prestation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Projet\UserBundle\Entity\Demande;
 
 class DemandeController extends Controller
 {
@@ -41,5 +42,17 @@ class DemandeController extends Controller
          $em->persist($demandePrestation);
          $em->flush();
          return new JsonResponse(true);
+    }
+    /**
+     * @Route("/agent_technique/demandes")
+     * @Method({"GET"})
+     */
+    public function getdemandeByEtatAction(Request $request)
+    {
+        $etat=$this->get('request')->get('etat');
+        $em = $this->getDoctrine()->getManager();
+        $demandes = $em->getRepository('ProjetUserBundle:Demande')->findbyet($etat);
+
+        return new JsonResponse($demandes);
     }
 }
