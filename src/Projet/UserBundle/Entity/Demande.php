@@ -3,6 +3,7 @@ namespace Projet\UserBundle\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
 * @ORM\Entity()
@@ -47,11 +48,7 @@ class Demande
      */
     public $etat;
     
-    /**
-     *
-     * @ORM\ManyToMany(
-     * @var ArrayCollection
-     */
+    
     public $prestations;
     
     
