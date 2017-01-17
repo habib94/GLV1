@@ -15,16 +15,18 @@ class DemandeController extends Controller
 {
     
      /**
-     * @Route("/visiteur/demandes")
-     * @Method({"POST"})
+    * @Route("/visiteur/demandes")
+    * @Method({"POST"})
      */
     public function addDemande(Request $request){
          $demande = json_decode($request->get('demande'));   
          $client = new Client();
          $client->setEmail($demande->email);
-         $client->setFirstname($demande->nom);
-         $client->setLastname($demande->prenom);
-         $client->setPassword($demande->motdepasse);
+         $client->setNom($demande->nom);
+         $client->setAdresse($demande->adresse);
+         $client->setMotdepasse($demande->motdepasse);
+         $client->setTel($demande->tel);
+        
          $em = $this->getDoctrine()->getManager();
          $em->persist($client);
          $demandePrestation = new Demande();
