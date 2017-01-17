@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Projet\UserBundle\Entity\Prestation;
+use Projet\UserBundle\Entity\Expert;
+
 
 class VisiteurController extends Controller
 {
@@ -32,5 +34,6 @@ class VisiteurController extends Controller
         
         return new JsonResponse($prest);
     }
+    
     
 }

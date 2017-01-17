@@ -20,18 +20,21 @@ class Prestation
     /**
      * @ORM\Column(type="string")
      */
-    public $nomPrestation;
+    public $nom;
 
     /**
      * @ORM\Column(type="string")
      */
-    public $descriptionPrestation;
+    public $description;
     /**
      * @ORM\Column(type="string")
      */
     public $urlImage;
-
-    
+   /**
+   * @ORM\OneToMany(targetEntity="Projet\UserBundle\Entity\LigneDevis", mappedBy="Prestation")
+   * @ORM\JoinColumn(nullable=false)
+   */
+     public $lignedevis;
 
     /**
      * Get id
@@ -44,51 +47,51 @@ class Prestation
     }
 
     /**
-     * Set nomPrestation
+     * Set nom
      *
-     * @param string $nomPrestation
+     * @param string $nom
      *
      * @return Prestation
      */
-    public function setNomPrestation($nomPrestation)
+    public function setNom($nom)
     {
-        $this->nomPrestation = $nomPrestation;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get nomPrestation
+     * Get nom
      *
      * @return string
      */
-    public function getNomPrestation()
+    public function getNom()
     {
-        return $this->nomPrestation;
+        return $this->nom;
     }
 
     /**
-     * Set descriptionPrestation
+     * Set description
      *
-     * @param string $descriptionPrestation
+     * @param string $description
      *
      * @return Prestation
      */
-    public function setDescriptionPrestation($descriptionPrestation)
+    public function setDescription($description)
     {
-        $this->descriptionPrestation = $descriptionPrestation;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descriptionPrestation
+     * Get description
      *
      * @return string
      */
-    public function getDescriptionPrestation()
+    public function getDescription()
     {
-        return $this->descriptionPrestation;
+        return $this->description;
     }
 
     /**
@@ -113,5 +116,46 @@ class Prestation
     public function getUrlImage()
     {
         return $this->urlImage;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lignedevis = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     *
+     * @return Prestation
+     */
+    public function addLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis[] = $lignedevi;
+
+        return $this;
+    }
+
+    /**
+     * Remove lignedevi
+     *
+     * @param \Projet\UserBundle\Entity\LigneDevis $lignedevi
+     */
+    public function removeLignedevi(\Projet\UserBundle\Entity\LigneDevis $lignedevi)
+    {
+        $this->lignedevis->removeElement($lignedevi);
+    }
+
+    /**
+     * Get lignedevis
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLignedevis()
+    {
+        return $this->lignedevis;
     }
 }
