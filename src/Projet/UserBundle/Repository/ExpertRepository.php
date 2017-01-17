@@ -11,7 +11,7 @@ namespace Projet\UserBundle\Repository;
 class ExpertRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findDispo($b)
-{ $b=true;
+{ 
         $qb = $this->createQueryBuilder('a');
 
         $qb
@@ -24,19 +24,6 @@ class ExpertRepository extends \Doctrine\ORM\EntityRepository
           ->getResult()
         ;
 }
-public function findNonDispo($b)
-{ $b=false;
-        $qb = $this->createQueryBuilder('a');
 
-        $qb
-          ->where('a.disponible = :b')
-          ->setParameter('b', $b)
-        ;
-
-        return $qb
-          ->getQuery()
-          ->getResult()
-        ;
-}
 
 }
