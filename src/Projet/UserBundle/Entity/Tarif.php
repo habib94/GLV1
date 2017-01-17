@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 /**
-* @ORM\Entity(repositoryClass="TarifRepository")
+* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\TarifRepository")
 */
 class Tarif {
 

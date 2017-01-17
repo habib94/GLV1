@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\LigneDevisRepository;
 
 /**
-* @ORM\Entity(repositoryClass="LigneDevisRepository")
+* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\LigneDevisRepository")
 */
 class LigneDevis 
 {

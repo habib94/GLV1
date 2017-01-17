@@ -3,12 +3,11 @@
 namespace Projet\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Projet\UserBundle\Repository\PrestationRepository;
 
  /**
  * @ORM\Entity()
  * @ORM\Table(name="prestations")
- * @ORM\Entity(repositoryClass="PrestationRepository")
+ * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\PrestationRepository")
  */
 class Prestation
 {

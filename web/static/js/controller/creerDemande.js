@@ -7,8 +7,8 @@
 
 var GLApp = angular.module("GLApp");
 
-GLApp.controller("creerDemande",["$scope","$uibModal","prestationService","EVENTS","demandeService",
-    function ($scope,$uibModal,prestationService,EVENTS,demandeService){
+GLApp.controller("creerDemande",["$scope","$uibModal","$location","$timeout","prestationService","EVENTS","demandeService",
+    function ($scope,$uibModal,$location,$timeout,prestationService,EVENTS,demandeService){
         
         $scope.demande = {};
         
@@ -26,6 +26,7 @@ GLApp.controller("creerDemande",["$scope","$uibModal","prestationService","EVENT
                 return;
             demandeService.save().then(function (){
                GLApp.openInformationDialog($uibModal,"Votre demande a été bien prise en charge"); 
+               GLApp.go($location,$timeout,"/login");
             },function (){
                 GLApp.openErrorConnexionDialog($uibModal);
             });

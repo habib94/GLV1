@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\ExpertRepository;
 
 /**
-* @ORM\Entity(repositoryClass="ExpertRepository")
+* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\ExpertRepository")
 */
 class Expert{
     

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\ClientRepository;
 
 /**
-* @ORM\Entity(repositoryClass="ClientRepository")
+* @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\ClientRepository")
 */
 class Client{
 

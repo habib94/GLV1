@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\SatisfactionRepository;
 
  /**
- * @ORM\Entity(repositoryClass="SatisfactionRepository")
+ * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\SatisfactionRepository")
  */
 class Satisfaction
 {

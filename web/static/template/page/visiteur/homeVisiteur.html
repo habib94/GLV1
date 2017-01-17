@@ -7,8 +7,8 @@
     <div class="center-block col-md-6">
         <div class="col-xs-12" ng-repeat="prestation in prestations">
             <img class="col-xs-4" ng-src="[[[prestation.urlImage]]]"/>
-            <span class="col-xs-2" ng-bind="prestation.nomPrestation"></span>
-            <span class="col-xs-2" ng-bind="prestation.descriptionPrestation"></span>
+            <span class="col-xs-2" ng-bind="prestation.nom"></span>
+            <span class="col-xs-4" ng-bind="prestation.description"></span>
         </div>
         <div class="col-xs-12">
             <a class="center-block btn btn-success" href="#/creer-demande">demander maintenant</a>

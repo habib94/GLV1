@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\CompteRepository;
 
 /**
- * @ORM\Entity(repositoryClass="CompteRepository")
+ * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\CompteRepository")
  */
 class Compte{
 

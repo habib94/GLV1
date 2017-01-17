@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Projet\UserBundle\Repository\CommandeRepository;
 
  /**
- * @ORM\Entity(repositoryClass="CommandeRepository")
+ * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\CommandeRepository")
  */
 class Commande{
     
