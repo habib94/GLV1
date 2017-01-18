@@ -2,18 +2,31 @@
 
 <div class="container-fluid body-page" ng-controller="homeClient">
     
-    <h1>presations</h1>
+    <h1 class="text-center title">Vos demandes</h1>
     
-    <div class="center-block col-md-6">
-        <div class="col-xs-12" ng-repeat="prestation in prestations">
-            <img class="col-xs-4" ng-src="[[[prestation.urlImage]]]"/>
-            <span class="col-xs-2" ng-bind="prestation.nom"></span>
-            <span class="col-xs-4" ng-bind="prestation.description"></span>
-        </div>
-        <div class="col-xs-12">
-            <a class="center-block btn btn-success" href="#/creer-demande">demander maintenant</a>
-        </div>
+    <div ng-if="demandes.length===0">
+        <div class="well well-lg">vous n'avez faites aucun demande click sur ajouter demande</div>
     </div>
     
+    <div ng-if="demandes.length !== 0">
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    identificateur de la demande
+                </td>
+                <td>
+                    date
+                </td>
+                <td>
+                    état
+                </td>
+            </tr>
+            <tr ng-repeat="demande in demandes">
+                <td ng-bind="demande.id"></td>
+                <td ng-bind="demande.date | date:'dd/MM/yyyy'"></td>
+                <td ng-bind="demande.etat"></td>
+            </tr>
+        </table>
+    </div>
     
 </div>

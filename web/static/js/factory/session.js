@@ -6,7 +6,7 @@
 
 var GLApp= angular.module("GLApp");
 
-GLApp.factory("Session",function (){
+GLApp.factory("session",function (){
    
     var user = {id:4};
     

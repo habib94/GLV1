@@ -1,0 +1,30 @@
+<div class="menu-haute" ng-include="'/static/template/fragment/header-agent_technique.html'"></div>
+
+<div class="container-fluid body-page" ng-controller="homeAgentTechnique">
+    
+    <h1 class="text-center title">les nouvelles demandes</h1>
+    
+    <div ng-if="demandes.length===0">
+        <div class="well well-lg">aucun demandes n'a été trouvé</div>
+    </div>
+    
+    <div ng-if="demandes.length !== 0">
+        <div ng-repeat="demande in demandes">
+            <div class="col-xs-4">
+                <span ng-bind="demande.description"></span>
+            </div>
+            <div class="col-xs-2">
+                <span ng-bind="demande.date"></span>
+            </div>
+            <div class="col-xs-2">
+                <span>[[[demande.client.nom]]] [[[demande.client.prenom]]]</span>
+                <span>adresse : [[[demande.client.adresse]]] [[[demande.client.tel]]]</span>
+            </div>
+            <div class="col-xs-4">
+                <input type="button" ng-click="accepter(demande)" class="btn btn-success" value="accepter"/>
+                <input type="button" ng-click="refuser(demande)" class="btn btn-danger" value="annuler"/>
+            </div>
+        </div>
+    </div>
+    
+</div>

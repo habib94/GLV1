@@ -7,11 +7,15 @@
 
 var GLApp = angular.module("GLApp");
 
-GLApp.controller("homeClient",["$scope","$uibModal","demandeService","$timeout",
-    function ($scope,$uibModal,demandeService,$timeout){
+GLApp.controller("homeClient",["$scope","$uibModal","demandeService","$timeout","session",
+    function ($scope,$uibModal,demandeService,$timeout,session){
         
         $scope.demandes = [];
-        
-        $scope.get
+        demandeService.demandesOfClient(session.user()).then(function (reponse){
+            $scope.demandes = reponse.data;
+            $scope.$apply();
+        },function (){
+            GLApp.openErrorConnexionDialog($uibModal);
+        });
         
 }]);
