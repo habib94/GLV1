@@ -18,16 +18,16 @@ class ClientController extends Controller
     }
     
      /**
-     * @Route("/client/demandes")
+     * @Route("/client/{idClient}/demandes")
      * @Method({"GET"})
      */
-    public function getClientDemande(){
+    public function getClientDemande($idClient){
 
-        $user=$this->container->get('security.token_storage')->getToken()->getUser();
+        
         
         $em = $this->getDoctrine()->getManager();
 
-        $demandes = $em->getRepository('ProjetUserBundle:Demande')->findByClient($user);
+        $demandes = $em->getRepository('ProjetUserBundle:Demande')->findByClient($idClient);
 
        
         return new JsonResponse($demandes);
