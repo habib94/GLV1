@@ -33,6 +33,31 @@ class ClientController extends Controller
        
         return new JsonResponse($demandes);
     }
+     /**
+     * @Route("/client/{idClient}/demandes")
+     * @Method({"POST"})
+     */
+    public function addDemandeClient($idClient){
+         $dem = $request->get('demande');
+         $demande = json_decode($dem);  
+        $em = $this->getDoctrine()->getManager();
+
+        $client = $em->getRepository('ProjetUserBundle:Client')->findOneById($idClient);
+         $demandePrestation = new Demande();
+         $demandePrestation->setClient($client);
+         $demandePrestation->setDescription($demande->description);
+         $demandePrestation->setDateDemande(new DateTime());
+
+         $demandePrestation->setDatePrestation(DateTime::createFromFormat('d/m/Y', $demande->datePrestation));
+         $demandePrestation->setEtat("nouveau");
+         foreach($demande->prestations as $pres){
+             $prestation = $em->getRepository(Prestation::class)->find($pres->id);
+             $demandePrestation->addPrestation($prestation);
+         }
+         $em->persist($demandePrestation);
+         $em->flush();
+         return new JsonResponse(true);
+    }
     
     
 }

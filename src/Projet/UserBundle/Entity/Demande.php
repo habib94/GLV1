@@ -43,7 +43,7 @@ class Demande {
     public $etat;
     
     /**
-    * @ORM\ManyToOne(targetEntity="Client",inversedBy="demandes")
+    * @ORM\ManyToOne(targetEntity="Client",inversedBy="demandes",fetch="EAGER")
     * @ORM\JoinColumn(name="client_id",referencedColumnName="id")
     */
    public $client;
