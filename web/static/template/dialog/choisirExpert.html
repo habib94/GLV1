@@ -2,16 +2,18 @@
     <h3 class="modal-title">choisir un expert</h3>
 </div>
 <div class="modal-body">
-    <div class="form-group">
-        <label class="control-label col-xs-4">
-            <p class="text-left">Expert</p>
-        </label>
-        <div class="col-xs-6">
-            <option ng-model="expertChosie" ng-options="expert.nom for expert in experts">
-                
-            </option>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-xs-4">
+                <p class="text-left">Expert</p>
+            </label>
+            <div class="col-xs-6">
+                <select class="form-control" ng-model="expertChosie" ng-options="expert.nom for expert in experts">
+
+                </select>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
 

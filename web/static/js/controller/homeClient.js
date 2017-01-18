@@ -13,7 +13,7 @@ GLApp.controller("homeClient",["$scope","$uibModal","demandeService","$timeout",
         $scope.demandes = [];
         demandeService.demandesOfClient(session.user()).then(function (reponse){
             $scope.demandes = reponse.data;
-            $scope.$apply();
+            GLApp.apply($scope,$timeout);
         },function (){
             GLApp.openErrorConnexionDialog($uibModal);
         });

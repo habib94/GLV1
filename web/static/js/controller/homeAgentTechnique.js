@@ -15,7 +15,7 @@ GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$t
         $scope.getDemandes = function (){
             demandeService.getDemandeByEtat("nouveau").then(function (response){
                 $scope.demandes = response.data;
-                $scope.$apply();
+                GLApp.apply($scope,$timeout);
             },function (){
                 GLApp.openErrorConnexionDialog($uibModal);
             });

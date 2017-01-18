@@ -26,9 +26,7 @@ GLApp.service("demandeService",['$http',function ($http){
   };
         
    this.getDemandeByEtat = function (etat){
-       return $http.get("/agent_technique/demandes",{
-           etat : etat
-       });
+       return $http.get("/agent_technique/demandes?etat="+etat);
    };
    
    this.setEtatDemande = function (demande,etat){
