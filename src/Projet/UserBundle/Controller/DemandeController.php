@@ -55,4 +55,17 @@ class DemandeController extends Controller
         $demandes = $em->getRepository('ProjetUserBundle:Demande')->findbyet($etat);
         return new JsonResponse($demandes);
     }
+        /**
+     * @Route("/agent_technique/demandes/{idDemande}")
+     * @Method({"PUT"})
+     */
+    public function modifierEtatAction(Request $request,$idDemande){
+        $etat= $request->get('etat');
+        $em = $this->getDoctrine()->getManager();
+        $demande = $em->getRepository('ProjetUserBundle:Demande')->findOneById($idDemande);
+        $demande->setEtat($etat);
+        $em->persist($demande);
+         $em->flush();
+         return new JsonResponse(true);
+    }
 }
