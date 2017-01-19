@@ -7,8 +7,9 @@
 
 var GLApp = angular.module("GLApp");
 
-GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$timeout","session","$routeParams",
-    function ($scope,$uibModal,demandeService,$timeout,session,$routeParams){
+GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$timeout",
+    "session","$routeParams","devisService",
+    function ($scope,$uibModal,demandeService,$timeout,session,$routeParams,devisService){
         
         $scope.demandes = [];
         
@@ -28,7 +29,14 @@ GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$t
         $scope.getDemandes();
         
         $scope.accepterDevis = function (demande){
-            
+            GLApp.openWaitDialog($uibModal);
+            devisService.accepterDevis(demande).then(function (){
+                GLApp.closeWaitDialog();
+                GLApp.openInformationDialog($uibModal,"La commande a été générée avec succès");
+                $scope.getDemandes();
+            },function (){
+                GLApp.openErrorConnexionDialog($uibModal); 
+            });
         };
         
         $scope.etablirDevis = function (demande){

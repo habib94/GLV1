@@ -41,6 +41,18 @@ class LigneDevis
         $this->prestation = $prestation;
     }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function getMontant() {
+        return $this->montant;
+    }
+
+    function getPrestation() {
+        return $this->prestation;
+    }
+
 
    
 }

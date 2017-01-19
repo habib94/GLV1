@@ -8,6 +8,7 @@
 
 namespace Projet\UserBundle\Controller;
 
+use Projet\UserBundle\Entity\Commande;
 use Projet\UserBundle\Entity\Demande;
 use Projet\UserBundle\Entity\Devis;
 use Projet\UserBundle\Entity\LigneDevis;
@@ -25,6 +26,31 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class DevisController extends Controller
 {
+    /**
+     * @Route("agent_technique/demandes/{idDemande}/devis")
+     * @Method({"PUT"})
+     */
+    public function accepterDevis($idDemande) {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $demande =$em->getRepository(Demande::class)->find($idDemande);
+        
+        $demande->setEtat("validée");
+        
+        $commande = new Commande();
+        $commande->setOuvrier($demande->getOuvrier());
+        $commande->setDemande($demande);
+        $demande->setCommande($commande);
+        $devis = $demande->getDevis();
+        $devis->setEtat("accepté");
+        
+        $em->persist($devis);
+        $em->persist($commande);
+        $em->persist($demande);
+        $em->flush();
+        return JsonResponse::getJsonResponse(true);
+    }
+    
     
     /**
      * @Route("agent_technique/demandes/{idDemande}/devis")

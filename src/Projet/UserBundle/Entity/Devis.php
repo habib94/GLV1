@@ -69,4 +69,18 @@ class Devis{
          $this->lignesdevis = $lignesdevis;
      }
 
+     
+     function getId() {
+         return $this->id;
+     }
+
+     function getEtat() {
+         return $this->etat;
+     }
+
+     function getLignesdevis() {
+         return $this->lignesdevis;
+     }
+
+
 }

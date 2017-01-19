@@ -8,7 +8,7 @@ var GLApp= angular.module("GLApp");
 
 GLApp.factory("session",function (){
    
-    var user = {id:4};
+    var user = {id:1};
     
     return {
        user : function (){

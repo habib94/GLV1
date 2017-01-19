@@ -58,6 +58,11 @@ class Demande {
     * @ORM\JoinColumn(name="ouvrier_id",referencedColumnName="id")
     */
    public $ouvrier;
+   
+   /**
+    * @ORM\OneToOne(targetEntity="Commande",mappedBy="demande")
+    */
+   public $commande;
 
    /**
     * @ORM\ManyToMany(targetEntity="Prestation")
@@ -161,6 +166,10 @@ class Demande {
 
     function getDevis() {
         return $this->devis;
+    }
+
+    function setCommande($commande) {
+        $this->commande = $commande;
     }
 
 
