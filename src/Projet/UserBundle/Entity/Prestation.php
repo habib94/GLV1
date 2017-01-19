@@ -49,6 +49,22 @@ class Prestation
         $this->urlImage = $urlImage;
     }
 
+    function getId() {
+        return $this->id;
+    }
+
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getUrlImage() {
+        return $this->urlImage;
+    }
+
 
 
     

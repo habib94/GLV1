@@ -23,7 +23,7 @@
             </tr>
             <tr ng-repeat="demande in demandes">
                 <td ng-bind="demande.id"></td>
-                <td ng-bind="demande.datePrestation | dateServeur | date:'dd/MM/yyyy'"></td>
+                <td ng-bind="demande.dateDemande | dateServeur | date:'dd/MM/yyyy'"></td>
                 <td ng-bind="demande.etat"></td>
             </tr>
         </table>

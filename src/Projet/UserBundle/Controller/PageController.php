@@ -28,5 +28,12 @@ class PageController extends Controller
         return $this->render('agentTechnique.html.twig');
     }
    
+    /**
+     * @Route("/agent_administratif")
+     */
+    public function index_agent_administratifAction()
+    {
+        return $this->render('agent_administratif.html.twig');
+    }
     
 }

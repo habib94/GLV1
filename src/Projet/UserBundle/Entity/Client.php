@@ -74,5 +74,26 @@ class Client{
          $this->demandes = $demandes;
      }
 
+     function getId() {
+         return $this->id;
+     }
+
+     function getNom() {
+         return $this->nom;
+     }
+
+     function getPrenom() {
+         return $this->prenom;
+     }
+
+     function getAdresse() {
+         return $this->adresse;
+     }
+
+     function getTel() {
+         return $this->tel;
+     }
+
+
 
 }

@@ -86,5 +86,29 @@ class Expert{
 
 
 
-   
+     function getId() {
+         return $this->id;
+     }
+
+     function getNom() {
+         return $this->nom;
+     }
+
+     function getPrenom() {
+         return $this->prenom;
+     }
+
+     function getAdresse() {
+         return $this->adresse;
+     }
+
+     function getTel() {
+         return $this->tel;
+     }
+
+     function getDisponible() {
+         return $this->disponible;
+     }
+
+
 }

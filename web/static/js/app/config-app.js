@@ -15,6 +15,7 @@ GLApp.config(['$interpolateProvider',function($interpolateProvider) {
 GLApp.config(['$httpProvider', function ($httpProvider) {
 
   $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+  $httpProvider.defaults.headers.put["Content-Type"] = "application/x-www-form-urlencoded";
   $httpProvider.defaults.transformRequest.unshift(function (data, headersGetter) {
     var key, result = [];
 

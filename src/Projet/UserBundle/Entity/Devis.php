@@ -26,16 +26,11 @@ class Devis{
     /**
      * @ORM\Column(type="float")
      */
-    public $montantOuvrier;
-    
-    /**
-     * @ORM\Column(type="float")
-     */
-    public $fraisMarketing;
+    public $montantTotal;
 
     
     /**
-     * @ORM\ManyToMany(targetEntity="LigneDevis")
+     * @ORM\ManyToMany(targetEntity="LigneDevis",cascade={"persist"})
      * @ORM\JoinTable(name="devis_lignedevis",
      *      joinColumns={@ORM\JoinColumn(name="devis_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="lignedevis_id", referencedColumnName="id", unique=true)}
@@ -60,18 +55,18 @@ class Devis{
          $this->etat = $etat;
      }
 
-     function setMontantOuvrier($montantOuvrier) {
-         $this->montantOuvrier = $montantOuvrier;
+     function getMontantTotal() {
+         return $this->montantTotal;
      }
 
-     function setFraisMarketing($fraisMarketing) {
-         $this->fraisMarketing = $fraisMarketing;
+
+
+     function setMontantTotal($montantTotal) {
+         $this->montantTotal = $montantTotal;
      }
 
      function setLignesdevis($lignesdevis) {
          $this->lignesdevis = $lignesdevis;
      }
-
-
 
 }

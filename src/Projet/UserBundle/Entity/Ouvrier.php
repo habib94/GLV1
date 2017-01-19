@@ -3,7 +3,6 @@ namespace Projet\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Projet\UserBundle\Repository\OuvrierRepository;
 
 /**
 * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\OuvrierRepository")
@@ -29,9 +28,19 @@ class Ouvrier{
     public $prenom;
     
     /**
+     * @ORM\Column(type="string")
+     */
+    public $tel;
+    
+    /**
+     * @ORM\Column(type="string")
+     */
+    public $adresse;
+    
+    /**
      * @ORM\Column(type="boolean")
      */
-    public $disponible;
+    public $disponible=true;
   
     
   
@@ -96,6 +105,39 @@ class Ouvrier{
      function setTarifs($tarifs) {
          $this->tarifs = $tarifs;
      }
+     
+     function getTel() {
+         return $this->tel;
+     }
+
+     function getAdresse() {
+         return $this->adresse;
+     }
+
+     function setTel($tel) {
+         $this->tel = $tel;
+     }
+
+     function setAdresse($adresse) {
+         $this->adresse = $adresse;
+     }
+
+     function getId() {
+         return $this->id;
+     }
+
+     function getNom() {
+         return $this->nom;
+     }
+
+     function getPrenom() {
+         return $this->prenom;
+     }
+
+     function getDisponible() {
+         return $this->disponible;
+     }
+
 
 
 }

@@ -30,10 +30,12 @@ class ExpertController extends Controller
        
           $em = $this->getDoctrine()->getManager();
           $expert=$em->getRepository('ProjetUserBundle:Expert')->findOneById($idExpert);
-          $demande=getRepository('ProjetUserBundle:Demande')->findOneById($idDemande);
-         
+          $demande=$em->getRepository('ProjetUserBundle:Demande')->findOneById($idDemande);
+          $expert->setDisponible(false);
           $demande->setExpert($expert);
+          $demande->setEtat("encours");
           $em->persist($demande);
+          $em->persist($expert);
           $em->flush();
          return new JsonResponse(true);
     }

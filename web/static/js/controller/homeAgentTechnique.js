@@ -7,13 +7,17 @@
 
 var GLApp = angular.module("GLApp");
 
-GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$timeout","session",
-    function ($scope,$uibModal,demandeService,$timeout,session){
+GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$timeout","session","$routeParams",
+    function ($scope,$uibModal,demandeService,$timeout,session,$routeParams){
         
         $scope.demandes = [];
         
+        $scope.etat = $routeParams.etat;
+        
         $scope.getDemandes = function (){
-            demandeService.getDemandeByEtat("nouveau").then(function (response){
+            GLApp.openWaitDialog($uibModal);
+            demandeService.getDemandeByEtat($scope.etat).then(function (response){
+                GLApp.closeWaitDialog();
                 $scope.demandes = response.data;
                 GLApp.apply($scope,$timeout);
             },function (){
@@ -22,6 +26,28 @@ GLApp.controller("homeAgentTechnique",["$scope","$uibModal","demandeService","$t
         };
         
         $scope.getDemandes();
+        
+        $scope.accepterDevis = function (demande){
+            
+        };
+        
+        $scope.etablirDevis = function (demande){
+            var uibModalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: '/static/template/dialog/etablirDevis.html',
+                controller: 'etablirDevis',
+                resolve: {
+                  demande: function () {
+                    return demande;
+                  }
+                }
+            });
+            uibModalInstance.result.then(function (){
+                $scope.getDemandes();
+            },function (){
+                
+            });
+        };   
         
         $scope.accepter = function (demande){
             var uibModalInstance = $uibModal.open({

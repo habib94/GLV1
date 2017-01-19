@@ -4,7 +4,6 @@ namespace Projet\UserBundle\Entity;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use Projet\UserBundle\Repository\DemandeRepository;
 
 /**
 * @ORM\Entity(repositoryClass="Projet\UserBundle\Repository\DemandeRepository")
@@ -43,7 +42,7 @@ class Demande {
     public $etat;
     
     /**
-    * @ORM\ManyToOne(targetEntity="Client",inversedBy="demandes",fetch="EAGER")
+    * @ORM\ManyToOne(targetEntity="Client",inversedBy="demandes")
     * @ORM\JoinColumn(name="client_id",referencedColumnName="id")
     */
    public $client;
@@ -123,6 +122,47 @@ class Demande {
     function setDevis($devis) {
         $this->devis = $devis;
     }
+
+    function getId() {
+        return $this->id;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getDatePrestation() {
+        return $this->datePrestation;
+    }
+
+    function getDateDemande() {
+        return $this->dateDemande;
+    }
+
+    function getEtat() {
+        return $this->etat;
+    }
+
+    function getClient() {
+        return $this->client;
+    }
+
+    function getExpert() {
+        return $this->expert;
+    }
+
+    function getOuvrier() {
+        return $this->ouvrier;
+    }
+
+    function getPrestations() {
+        return $this->prestations;
+    }
+
+    function getDevis() {
+        return $this->devis;
+    }
+
 
 
 }

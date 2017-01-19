@@ -11,6 +11,6 @@ GLApp.filter("dateServeur",function (){
     return function (dateServeur){
         if(dateServeur === undefined)
             return;
-        return new Date(dateServeur.date);
+        return new Date(dateServeur);
     };
 });

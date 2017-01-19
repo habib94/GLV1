@@ -8,7 +8,9 @@
                 <p class="text-left">Expert</p>
             </label>
             <div class="col-xs-6">
-                <select class="form-control" ng-model="expertChosie" ng-options="expert.nom for expert in experts">
+                <select class="form-control" 
+                        ng-model="expertChosie"
+                        ng-options="expert.nom+' '+expert.prenom for expert in experts">
 
                 </select>
             </div>

@@ -6,6 +6,7 @@ use DateTime;
 use Projet\UserBundle\Entity\Client;
 use Projet\UserBundle\Entity\Demande;
 use Projet\UserBundle\Entity\Prestation;
+use Projet\UserBundle\Response\JsonResponse as JsonResponse2;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,6 +15,23 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DemandeController extends Controller
 {
+    
+    /**
+     * @Route("/client/{idClient}/demandes")
+     * @Method({"GET"})
+     */
+    public function getClientDemande($idClient){
+
+        
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $demandes = $em->getRepository('ProjetUserBundle:Demande')->findByClient($idClient);
+
+       
+        return JsonResponse2::getJsonResponse($demandes);
+    }
+     
     
      /**
     * @Route("/visiteur/demandes")
@@ -36,7 +54,7 @@ class DemandeController extends Controller
          $demandePrestation->setDateDemande(new DateTime());
 
          $demandePrestation->setDatePrestation(DateTime::createFromFormat('d/m/Y', $demande->datePrestation));
-         $demandePrestation->setEtat("nouveau");
+         $demandePrestation->setEtat("nouvelle");
          foreach($demande->prestations as $pres){
              $prestation = $em->getRepository(Prestation::class)->find($pres->id);
              $demandePrestation->addPrestation($prestation);
@@ -45,6 +63,8 @@ class DemandeController extends Controller
          $em->flush();
          return new JsonResponse(true);
     }
+    
+    
     /**
      * @Route("/agent_technique/demandes")
      * @Method({"GET"})
@@ -53,7 +73,7 @@ class DemandeController extends Controller
         $etat= $request->get('etat');
         $em = $this->getDoctrine()->getManager();
         $demandes = $em->getRepository('ProjetUserBundle:Demande')->findbyet($etat);
-        return new JsonResponse($demandes);
+        return JsonResponse2::getJsonResponse($demandes);
     }
         /**
      * @Route("/agent_technique/demandes/{idDemande}")
@@ -65,6 +85,32 @@ class DemandeController extends Controller
         $demande = $em->getRepository('ProjetUserBundle:Demande')->findOneById($idDemande);
         $demande->setEtat($etat);
         $em->persist($demande);
+         $em->flush();
+         return new JsonResponse(true);
+    }
+    
+    /**
+     * @Route("/client/{idClient}/demandes")
+     * @Method({"POST"})
+     */
+    public function addDemandeClient(Request $request,$idClient){
+         $dem = $request->get('demande');
+         $demande = json_decode($dem);  
+        $em = $this->getDoctrine()->getManager();
+
+        $client = $em->getRepository('ProjetUserBundle:Client')->findOneById($idClient);
+         $demandePrestation = new Demande();
+         $demandePrestation->setClient($client);
+         $demandePrestation->setDescription($demande->description);
+         $demandePrestation->setDateDemande(new DateTime());
+
+         $demandePrestation->setDatePrestation(DateTime::createFromFormat('d/m/Y', $demande->datePrestation));
+         $demandePrestation->setEtat("nouvelle");
+         foreach($demande->prestations as $pres){
+             $prestation = $em->getRepository(Prestation::class)->find($pres->id);
+             $demandePrestation->addPrestation($prestation);
+         }
+         $em->persist($demandePrestation);
          $em->flush();
          return new JsonResponse(true);
     }

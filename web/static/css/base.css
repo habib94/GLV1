@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.demande {
+    padding: 10px;
+}
+
 #logo>img {
     height: 50px;
 }

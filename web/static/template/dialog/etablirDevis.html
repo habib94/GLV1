@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h3 class="modal-title">établir le devis</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Ouvrier:</p>
+            </label>
+            <div class="col-sm-8">
+                <select class="form-control" ng-model="demande.ouvrier"
+                    ng-options="ouvrier.nom+' '+ouvrier.prenom for ouvrier in ouvriers">
+                            
+                </select>
+            </div>
+        </div>
+        <div class='form-group' erreur="">
+            <label class='col-sm-4 control-label '>
+                <p class="text-left">Les préstations:</p>
+            </label>
+            <div class="col-sm-8">
+                <table class="table table-centre table-hover">
+                    <tr>
+                        <th>montant</th>
+                        <th>préstation</th>
+                    </tr>
+                    <tr ng-repeat="ligneDevis in demande.devis.lignesDevis track by $index">
+                        <td>
+                            <input type="number" ng-model="ligneDevis.montant"
+                                   class="form-control"/>
+                        </td>
+                        <td ng-bind="ligneDevis.prestation.nom">
+                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">CANCEL</button>
+</div>

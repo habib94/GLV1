@@ -1,0 +1,38 @@
+<div class="menu-haute" ng-include="'/static/template/fragment/header-agent_administratif.html'"></div>
+
+<div class="container-fluid body-page" ng-controller="homeAgentAdministratif">
+    
+    <h1 class="text-center title">les ouvriers</h1>
+    
+    <a href="#/add-ouvrier" class="btn btn-success">ajouter ouvrier</a>
+    
+    <div ng-if="ouvriers.length===0">
+        <div class="well well-lg">aucun ouvrier</div>
+    </div>
+    
+    <div ng-if="ouvriers.length !== 0">
+        <table class="table table-centre table-hover">
+            <tr>
+                <th>
+                    Nom
+                </th>
+                <th>
+                    prénom
+                </th>
+                <th>
+                    Téléphone
+                </th>
+                <th>
+                    Adresse
+                </th>
+            </tr>
+            <tr ng-repeat="ouvrier in ouvriers">
+                <td ng-bind="ouvrier.nom"></td>
+                <td ng-bind="ouvrier.prenom"></td>
+                <td ng-bind="ouvrier.tel"></td>
+                <td ng-bind="ouvrier.adresse"></td>
+            </tr>
+        </table>
+    </div>
+    
+</div>
