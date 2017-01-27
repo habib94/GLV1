@@ -1,15 +1,18 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-visiteur.html'"></div>
+<div class="menu-haute col-md-10 center-block" ng-include="'/static/template/fragment/header-visiteur.html'"></div>
 
-<div class="container-fluid body-page">
+<div class="body-page col-md-10 center-block">
    
-    <form class="form-horizontal" method="POST" action="/" name="creerDemandeForm">
+    <div class="container-fluid">
+    
+        
+    <form class="form-horizontal col-md-6 center-block" name="authentification" ng-controller="login">
        
         <div class='form-group'>
             <label class='col-sm-4 control-label '>
                 <p class="text-left">Email:</p>
             </label>
             <div class="col-sm-8">
-                <input type="text"  class="form-control" required=""/>
+                <input type="text" value="client@client.com" ng-model="compte.email"  class="form-control" required=""/>
             </div>
         </div>
         
@@ -18,12 +21,14 @@
                 <p class="text-left">mot de passe:</p>
             </label>
             <div class="col-sm-8">
-                <input type="text" name="motdepasse"  class="form-control" required=""/>
+                <input type="password" value="habib19940805" name="motdepasse" ng-model="compte.motdepasse"  class="form-control" required=""/>
             </div>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-success" value="se connecter"/>
+            <input type="button" ng-click="login()" class="btn btn-success center-block" value="se connecter"/>
         </div>
     </form>
+        
+    </div>
     
 </div>

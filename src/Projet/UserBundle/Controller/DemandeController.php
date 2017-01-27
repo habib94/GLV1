@@ -4,9 +4,12 @@ namespace Projet\UserBundle\Controller;
 
 use DateTime;
 use Projet\UserBundle\Entity\Client;
+use Projet\UserBundle\Entity\Compte;
 use Projet\UserBundle\Entity\Demande;
 use Projet\UserBundle\Entity\Prestation;
+use Projet\UserBundle\Entity\Role;
 use Projet\UserBundle\Response\JsonResponse as JsonResponse2;
+use Projet\UserBundle\Security\Encoder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -47,7 +50,16 @@ class DemandeController extends Controller
          $client->setTel($demande->tel);
         
          $em = $this->getDoctrine()->getManager();
+         
+         $encoderService = $this->get('security.password_encoder');
+          Encoder::setEncoder($encoderService);
+         $compte = Compte::construct($demande->email,  Encoder::codePassword($demande->motdepasse));
+         $role = $em->getRepository(Role::class)->findOneBy(array('nom'=>Role::$ROLE_CLIENT));
+         $compte->setRole($role);
+         $client->setCompte($compte);
          $em->persist($client);
+         $em->persist($compte);
+         
          $demandePrestation = new Demande();
          $demandePrestation->setClient($client);
          $demandePrestation->setDescription($demande->description);

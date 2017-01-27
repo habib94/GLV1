@@ -1,10 +1,12 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-agent_administratif.html'"></div>
+<div class="menu-haute col-md-10 center-block" ng-include="'/static/template/fragment/header-agent_administratif.html'"></div>
 
-<div class="container-fluid body-page" ng-controller="homeAgentAdministratif">
+<div class="body-page col-md-10 center-block" ng-controller="homeAgentAdministratif">
+    
+    <div class="container-fluid">
     
     <h1 class="text-center title">les ouvriers</h1>
     
-    <a href="#/add-ouvrier" class="btn btn-success">ajouter ouvrier</a>
+    <a href="#/add-ouvrier" class="btn btn-success margin-bottom">ajouter ouvrier</a>
     
     <div ng-if="ouvriers.length===0">
         <div class="well well-lg">aucun ouvrier</div>
@@ -35,4 +37,5 @@
         </table>
     </div>
     
+    </div>
 </div>

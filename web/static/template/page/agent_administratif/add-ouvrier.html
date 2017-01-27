@@ -1,99 +1,103 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-agent_administratif.html'"></div>
+<div class="menu-haute center-block col-md-10" ng-include="'/static/template/fragment/header-agent_administratif.html'"></div>
 
-<div class="container-fluid body-page" ng-controller="addOuvrier">
+<div class="body-page center-block col-md-10" ng-controller="addOuvrier">
     
-    <h1 class="text-center title">ajouter nouveau ouvrier</h1>
-       
-    <form class="form-horizontal" name='addOuvrierForm' novalidate=''>
+    <div class="container-fluid">
+        <h1 class="text-center title">ajouter nouveau ouvrier</h1>
+
+        <form class="form-horizontal" name='addOuvrierForm' novalidate=''>
+
+            <div class='form-group' erreur="">
+                <label class='col-sm-4 control-label '>
+                    <p class="text-left">Nom:</p>
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" ng-model="ouvrier.nom" name="nom" validation=""
+                           regex="^[A-Za-z ]{2,40}$" class="form-control" required=""/>
+                </div>
+            </div>
+            <div class='form-group' erreur="">
+                <label class='col-sm-4 control-label '>
+                    <p class="text-left">Prénom:</p>
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" ng-model="ouvrier.prenom" name="prenom" validation=""
+                           regex="^[A-Za-z ]{2,40}$" class="form-control" required=""/>
+                </div>
+            </div>
+
+            <div class='form-group' erreur="">
+                <label class='col-sm-4 control-label '>
+                    <p class="text-left">Adresse:</p>
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" ng-model="ouvrier.adresse" name="adresse" validation=""
+                           regex="^[A-Za-z0-9 ,;!?.]{2,40}$" class="form-control" required=""/>
+                </div>
+            </div>
+            <div class='form-group' erreur="">
+                <label class='col-sm-4 control-label '>
+                    <p class="text-left">Téléphone:</p>
+                </label>
+                <div class="col-sm-8">
+                    <input type="number" ng-model="ouvrier.tel" name="tel" validation=""
+                           regex="^[0-9]{10,10}$" class="form-control" required=""/>
+                </div>
+            </div>
+
+            <div class='form-group' erreur="">
+                <label class='col-sm-4 control-label '>
+                    <p class="text-left">Les tarifs:</p>
+                </label>
+                <div class="col-sm-8">
+                    <table class="table table-centre table-hover">
+                        <tr>
+                            <th>prix</th>
+                            <th>préstation</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="tarif in ouvrier.tarifs track by $index">
+                            <td>
+                                <input type="number" ng-model="tarif.prix"
+                                       class="form-control"/>
+                            </td>
+                            <td ng-bind="tarif.prestation.nom">
+
+                            </td>
+                            <td>
+                                <a class="btn"  ng-click="remove(tarif)">
+                                    <i class="fa fa-remove"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" ng-model="newTarif.prix"
+                                       class="form-control"/>
+                            </td>
+                            <td>
+                                <select ng-model="newTarif.prestation"
+                                        class="form-control"
+                                    ng-options="prestation.nom for prestation in prestations">
+
+                                </select>
+                            </td>
+                            <td>
+                                <a class="btn"  ng-click="addTarif()">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="button" class="btn btn-success center-block"
+                       value="valider" ng-click="ajouterOuvrier()"/>
+            </div>
+        </form>
+
+    </div>
     
-        <div class='form-group' erreur="">
-            <label class='col-sm-4 control-label '>
-                <p class="text-left">Nom:</p>
-            </label>
-            <div class="col-sm-8">
-                <input type="text" ng-model="ouvrier.nom" name="nom" validation=""
-                       regex="^[A-Za-z ]{2,40}$" class="form-control" required=""/>
-            </div>
-        </div>
-        <div class='form-group' erreur="">
-            <label class='col-sm-4 control-label '>
-                <p class="text-left">Prénom:</p>
-            </label>
-            <div class="col-sm-8">
-                <input type="text" ng-model="ouvrier.prenom" name="prenom" validation=""
-                       regex="^[A-Za-z ]{2,40}$" class="form-control" required=""/>
-            </div>
-        </div>
-       
-        <div class='form-group' erreur="">
-            <label class='col-sm-4 control-label '>
-                <p class="text-left">Adresse:</p>
-            </label>
-            <div class="col-sm-8">
-                <input type="text" ng-model="ouvrier.adresse" name="adresse" validation=""
-                       regex="^[A-Za-z0-9 ,;!?.]{2,40}$" class="form-control" required=""/>
-            </div>
-        </div>
-        <div class='form-group' erreur="">
-            <label class='col-sm-4 control-label '>
-                <p class="text-left">Téléphone:</p>
-            </label>
-            <div class="col-sm-8">
-                <input type="number" ng-model="ouvrier.tel" name="tel" validation=""
-                       regex="^[0-9]{10,10}$" class="form-control" required=""/>
-            </div>
-        </div>
-        
-        <div class='form-group' erreur="">
-            <label class='col-sm-4 control-label '>
-                <p class="text-left">Les tarifs:</p>
-            </label>
-            <div class="col-sm-8">
-                <table class="table table-centre table-hover">
-                    <tr>
-                        <th>prix</th>
-                        <th>préstation</th>
-                        <th></th>
-                    </tr>
-                    <tr ng-repeat="tarif in ouvrier.tarifs track by $index">
-                        <td>
-                            <input type="number" ng-model="tarif.prix"
-                                   class="form-control"/>
-                        </td>
-                        <td ng-bind="tarif.prestation.nom">
-                            
-                        </td>
-                        <td>
-                            <a class="btn"  ng-click="remove(tarif)">
-                                <i class="fa fa-remove"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" ng-model="newTarif.prix"
-                                   class="form-control"/>
-                        </td>
-                        <td>
-                            <select ng-model="newTarif.prestation"
-                                    class="form-control"
-                                ng-options="prestation.nom for prestation in prestations">
-                                        
-                            </select>
-                        </td>
-                        <td>
-                            <a class="btn"  ng-click="addTarif()">
-                                <i class="fa fa-plus"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <input type="button" class="btn btn-success center-block"
-                   value="valider" ng-click="ajouterOuvrier()"/>
-        </div>
-    </form>
 </div>

@@ -1,9 +1,10 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-client.html'"></div>
+<div class="menu-haute col-md-10 center-block" ng-include="'/static/template/fragment/header-client.html'"></div>
 
-<div class="container-fluid body-page" ng-controller="creerDemandeClient">
+<div class="body-page col-md-10 center-block" ng-controller="creerDemandeClient">
    
+    <div class="container-fluid">
     
-    <form class="form-horizontal" name="creerDemandeForm" novalidate="">
+        <form class="form-horizontal" name="creerDemandeForm" novalidate="">
         <div class="form-group" erreur="">
             <label class='col-sm-4 control-label '>
                 <p class="text-left">Préstations:</p>
@@ -56,4 +57,5 @@
         </div>
     </form>
     
+    </div>
 </div>

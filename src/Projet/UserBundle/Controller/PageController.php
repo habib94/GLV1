@@ -2,26 +2,36 @@
 
 namespace Projet\UserBundle\Controller;
 
+use Projet\UserBundle\Entity\Role;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 
 
 
 class PageController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/",name="index")
      */
     public function indexAction()
     {
+        $user = $this->getUser();
+        if($user === null){
+            return $this->render('indexVisiteur.html.twig');
+        }
+        $roles = $user->getRoles();
+        if(in_array(Role::$ROLE_CLIENT,$roles)){
+            return $this->redirectToRoute("indexClient");
+        }else if(in_array(Role::$ROLE_AGENT_ADMINISTRATIF,$roles)){
+            return $this->redirectToRoute("indexAgentAdministratif");
+        }else if(in_array(Role::$ROLE_AGENT_TECHNIQUE,$roles)){
+            return $this->redirectToRoute("indexAgentTechnique");
+        }
         return $this->render('indexVisiteur.html.twig');
     }
 
     /**
-     * @Route("/agent_technique")
+     * @Route("/agent_technique",name="indexAgentTechnique")
      */
     public function indexAgentTechniqueAction()
     {
@@ -29,11 +39,18 @@ class PageController extends Controller
     }
    
     /**
-     * @Route("/agent_administratif")
+     * @Route("/agent_administratif",name="indexAgentAdministratif")
      */
     public function index_agent_administratifAction()
     {
         return $this->render('agent_administratif.html.twig');
+    }
+    
+    /**
+     * @Route("/client",name="indexClient")
+     */
+    public function clientPage() {
+        return $this->render("client.html.twig");
     }
     
 }

@@ -20,4 +20,17 @@ GLApp.controller("homeClient",["$scope","$uibModal","demandeService","$timeout",
             GLApp.openErrorConnexionDialog($uibModal);
         });
         
+        $scope.setSatisfaction = function (demande){
+            $uibModal.open({
+                animation: true,
+                templateUrl: '/static/template/dialog/satisfaction.html',
+                controller: 'satisfaction',
+                resolve: {
+                  demande: function () {
+                    return demande;
+                  }
+                }
+            });
+        };
+        
 }]);

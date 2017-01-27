@@ -5,3 +5,9 @@ parameters:
 
 services:
     
+    authentication_handler:
+        class: Projet\UserBundle\Security\AuthenticationHandler
+        public: false
+        arguments:
+            router : '@router'
+            session: '@session'

@@ -1,7 +1,9 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-agent_technique.html'"></div>
+<div class="menu-haute center-block col-md-10" ng-include="'/static/template/fragment/header-agent_technique.html'"></div>
 
-<div class="container-fluid body-page" ng-controller="homeAgentTechnique">
+<div class="body-page col-md-10 center-block" ng-controller="homeAgentTechnique">
         
+    <div class="container-fluid">
+    
         <h1 class="text-center title" ng-if="etat==='nouvelle'">les nouvelles demandes</h1>
         <h1 class="text-center title" ng-if="etat==='encours'">les demandes en cours</h1>
         <h1 class="text-center title" ng-if="etat==='réglée'">les demandes réglée</h1>
@@ -13,22 +15,36 @@
         </div>
 
         <div ng-if="demandes.length !== 0">
+            <div class="demande col-xs-12">
+                <div class="col-xs-2 text-danger">
+                    description de la demande
+                </div>
+                <div class="col-xs-1 text-danger">
+                    date
+                </div>
+                <div class="col-xs-3 text-danger">
+                    informations du client
+                </div>
+                <div class="col-xs-2 text-danger">
+                    Les préstations demandées
+                </div>
+            </div>
             <div ng-repeat="demande in demandes" class="col-xs-12 demande">
-                <div class="col-xs-3">
+                <div class="col-xs-2">
                     <span ng-bind="demande.description"></span>
                 </div>
                 <div class="col-xs-1">
                     <span ng-bind="demande.datePrestation | dateServeur | date:'dd/MM/yyyy'"></span>
                 </div>
-                <div class="col-xs-2">
-                    <span>[[[demande.client.nom]]] [[[demande.client.prenom]]]</span>
-                    <span>adresse : [[[demande.client.adresse]]]</span>
-                    <span>Téléphone : [[[demande.client.tel]]]</span>
+                <div class="col-xs-3">
+                    <p>[[[demande.client.nom]]] [[[demande.client.prenom]]]</p>
+                    <p>adresse : [[[demande.client.adresse]]]</p>
+                    <p>Téléphone : [[[demande.client.tel]]]</p>
                 </div>
-                <div class="col-xs-4" ng-if="etat === 'encours'">
+                <div class="col-xs-2">
                     <p ng-repeat="prestation in demande.prestations" ng-bind="prestation.nom"></p>
                 </div>
-                <div class="col-xs-4" ng-if="etat === 'réglée'">
+                <div class="col-xs-4" ng-if="etat === 'réglée' || etat==='validée'">
                     <table class="table table-hover table-centre">
                         <tr>
                             <th>prestation</th>
@@ -42,22 +58,23 @@
                     <div class="col-xs-6">montant total</div>
                     <div class="col-xs-6 text-danger" ng-bind="demande.devis.montantTotal+' DH'"></div>
                 </div>
-                <div class="col-xs-2" ng-if="etat === 'nouvelle'">
+                <div class="col-xs-3" ng-if="etat === 'nouvelle'">
                     <input type="button" ng-click="accepter(demande)"
                            class="btn btn-success" value="accepter"/>
                     <input type="button" ng-click="refuser(demande)"
                            class="btn btn-danger" value="annuler"/>
                 </div>
-                <div class="col-xs-2" ng-if="etat === 'encours'">
+                <div class="col-xs-3" ng-if="etat === 'encours'">
                     <input type="button" ng-click="etablirDevis(demande)"
                            class="btn btn-success" value="Etablir devis"/>
                 </div>
-                <div class="col-xs-2" ng-if="etat === 'réglée'">
+                <div class="col-xs-3" ng-if="etat === 'réglée'">
                     <input type="button" ng-click="accepterDevis(demande)"
-                           class="btn btn-success" value="client a accepté le devis"/>
+                           class="btn btn-success" value="générer la commande"/>
                 </div>
             </div>
         </div>
    
+    </div>
     
 </div>

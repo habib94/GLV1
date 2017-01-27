@@ -36,6 +36,11 @@ class Client{
      * @ORM\Column(type="string")
      */
     public $tel;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Compte",mappedBy="client")
+     */
+    public $compte;
     
      /**
      * @ORM\OneToMany(targetEntity="Demande",mappedBy="client")
@@ -92,6 +97,11 @@ class Client{
 
      function getTel() {
          return $this->tel;
+     }
+
+     function setCompte($compte) {
+         $this->compte = $compte;
+         $compte->setClient($this);
      }
 
 

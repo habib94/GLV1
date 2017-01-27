@@ -4,6 +4,8 @@
 
 .demande {
     padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #6f6c6c;
 }
 
 #logo>img {
@@ -32,8 +34,12 @@
     border-color: white;
 }
 
+.prestation {
+    margin-bottom: 30px;
+}
+
 .menu-haute {
-    padding: 0px 10px;
+    padding: 0px;
 }
 
 div#menuGauche > ul {
@@ -42,7 +48,6 @@ div#menuGauche > ul {
 
 .body-page {
     background-color: white;
-    border-radius: 10px;
     padding: 10px;
 }
 

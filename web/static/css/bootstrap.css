@@ -2276,6 +2276,7 @@ th {
   line-height: 1.42857143;
   vertical-align: top;
   border-top: 1px solid #ddd;
+  text-align: center;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -4172,7 +4173,7 @@ v {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border: 1px solid transparent;
 }
 @media (min-width: 768px) {
@@ -6523,6 +6524,7 @@ button.close {
   display: block;
   margin-right: auto;
   margin-left: auto;
+  float: none;
 }
 .pull-right {
   float: right !important;

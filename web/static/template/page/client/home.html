@@ -1,32 +1,62 @@
-<div class="menu-haute" ng-include="'/static/template/fragment/header-client.html'"></div>
+<div class="menu-haute col-md-10 center-block" ng-include="'/static/template/fragment/header-client.html'"></div>
 
-<div class="container-fluid body-page" ng-controller="homeClient">
+<div class="body-page col-md-10 center-block" ng-controller="homeClient">
     
-    <h1 class="text-center title">Vos demandes</h1>
-    
-    <div ng-if="demandes.length===0">
-        <div class="well well-lg">vous n'avez faites aucun demande click sur ajouter demande</div>
+    <div class="container-fluid">
+
+        <h1 class="text-center title">Vos demandes</h1>
+
+        <div ng-if="demandes.length===0">
+            <div class="well well-lg">vous n'avez faites aucun demande click sur ajouter demande</div>
+        </div>
+
+        <div ng-if="demandes.length !== 0">
+            <table class="table table-hover table-centre">
+                <tr>
+                    <td>
+                        identificateur de la demande
+                    </td>
+                    <td>
+                        date
+                    </td>
+                    <td>
+                        état
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr ng-repeat="demande in demandes">
+                    <td ng-bind="demande.id"></td>
+                    <td ng-bind="demande.dateDemande | dateServeur | date:'dd/MM/yyyy'"></td>
+                    <td ng-bind="demande.etat"></td>
+                    <td>
+                        <div  ng-if="demande.etat === 'réglée' || demande.etat==='validée'">
+                            <table class="table table-hover table-centre">
+                                <tr>
+                                    <th>prestation</th>
+                                    <th>montant</th>
+                                </tr>
+                                <tr ng-repeat="ligneDevis in demande.devis.lignesdevis">
+                                    <td ng-bind="ligneDevis.prestation.nom"></td>
+                                    <td ng-bind="ligneDevis.montant+' DH'"></td>
+                                </tr>
+                            </table>
+                            <div class="col-xs-6">montant total</div>
+                            <div class="col-xs-6 text-danger" ng-bind="demande.devis.montantTotal+' DH'"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-if="demande.etat ==='validée'">
+                            <input type="button" class="btn btn-success"
+                                   value="votre satisfaction" ng-click="setSatisfaction(demande)"/>
+                        </div>
+                    </td>
+                 </tr>
+            </table>
+        </div>
     </div>
-    
-    <div ng-if="demandes.length !== 0">
-        <table class="table table-hover table-centre">
-            <tr>
-                <td>
-                    identificateur de la demande
-                </td>
-                <td>
-                    date
-                </td>
-                <td>
-                    état
-                </td>
-            </tr>
-            <tr ng-repeat="demande in demandes">
-                <td ng-bind="demande.id"></td>
-                <td ng-bind="demande.dateDemande | dateServeur | date:'dd/MM/yyyy'"></td>
-                <td ng-bind="demande.etat"></td>
-            </tr>
-        </table>
-    </div>
-    
 </div>
